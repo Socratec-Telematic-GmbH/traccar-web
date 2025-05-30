@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import {
   Table, TableBody, TableCell, TableHead, TableRow,
@@ -20,7 +20,7 @@ import MapRouteCoordinates from '../map/MapRouteCoordinates';
 import MapScale from '../map/MapScale';
 
 const CombinedReportPage = () => {
-  const classes = useReportStyles();
+  const { classes } = useReportStyles();
   const t = useTranslation();
 
   const devices = useSelector((state) => state.devices.items);

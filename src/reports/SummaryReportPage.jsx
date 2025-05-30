@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -35,7 +35,7 @@ const columnsMap = new Map(columnsArray);
 
 const SummaryReportPage = () => {
   const navigate = useNavigate();
-  const classes = useReportStyles();
+  const { classes } = useReportStyles();
   const t = useTranslation();
 
   const devices = useSelector((state) => state.devices.items);

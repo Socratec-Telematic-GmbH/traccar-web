@@ -27,7 +27,7 @@ export const generateLoginToken = async () => {
       if (response.ok) {
         token = await response.text();
       }
-    } catch (error) {
+    } catch {
       token = '';
     }
     nativePostMessage(`login|${token}`);
@@ -42,6 +42,11 @@ window.handleLoginToken = (token) => {
 const updateNotificationTokenListeners = new Set();
 window.updateNotificationToken = (token) => {
   updateNotificationTokenListeners.forEach((listener) => listener(token));
+};
+
+export const handleNativeNotificationListeners = new Set();
+window.handleNativeNotification = (message) => {
+  handleNativeNotificationListeners.forEach((listener) => listener(message));
 };
 
 const NativeInterface = () => {

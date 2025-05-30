@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   useMediaQuery, Select, MenuItem, FormControl, Button, TextField, Link, Snackbar, IconButton, Tooltip, Box,
 } from '@mui/material';
 import ReactCountryFlag from 'react-country-flag';
-import makeStyles from '@mui/styles/makeStyles';
+import { makeStyles } from 'tss-react/mui';
 import CloseIcon from '@mui/icons-material/Close';
-import LockOpenIcon from '@mui/icons-material/LockOpen';
+import VpnLockIcon from '@mui/icons-material/VpnLock';
 import { useTheme } from '@mui/material/styles';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -20,7 +20,7 @@ import LogoImage from './LogoImage';
 import { useCatch } from '../reactHelper';
 import Loader from '../common/components/Loader';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles()((theme) => ({
   options: {
     position: 'fixed',
     top: theme.spacing(2),
@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const LoginPage = () => {
-  const classes = useStyles();
+  const { classes } = useStyles();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const theme = useTheme();
@@ -64,6 +64,7 @@ const LoginPage = () => {
   const [email, setEmail] = usePersistedState('loginEmail', '');
   const [password, setPassword] = useState('');
   const [code, setCode] = useState('');
+  const [showServerTooltip, setShowServerTooltip] = useState(false);
 
   const registrationEnabled = useSelector((state) => state.session.server.registration);
   const languageEnabled = useSelector((state) => !state.session.server.attributes['ui.disableLoginLanguage']);
@@ -95,7 +96,7 @@ const LoginPage = () => {
       } else {
         throw Error(await response.text());
       }
-    } catch (error) {
+    } catch {
       setFailed(true);
       setPassword('');
     }
@@ -124,6 +125,13 @@ const LoginPage = () => {
     return () => handleLoginTokenListeners.delete(listener);
   }, []);
 
+  useEffect(() => {
+    if (window.localStorage.getItem('hostname') !== window.location.hostname) {
+      window.localStorage.setItem('hostname', window.location.hostname);
+      setShowServerTooltip(true);
+    }
+  }, []);
+
   if (openIdForced) {
     handleOpenIdLogin();
     return (<Loader />);
@@ -133,11 +141,15 @@ const LoginPage = () => {
     <LoginLayout>
       <div className={classes.options}>
         {nativeEnvironment && changeEnabled && (
-          <Tooltip title={t('settingsServer')}>
-            <IconButton onClick={() => navigate('/change-server')}>
-              <LockOpenIcon />
-            </IconButton>
-          </Tooltip>
+          <IconButton color="primary" onClick={() => navigate('/change-server')}>
+            <Tooltip
+              title={`${t('settingsServer')}: ${window.location.hostname}`}
+              open={showServerTooltip}
+              arrow
+            >
+              <VpnLockIcon />
+            </Tooltip>
+          </IconButton>
         )}
         {languageEnabled && (
           <FormControl>

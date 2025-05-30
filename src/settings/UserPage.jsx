@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import {
   Accordion,
@@ -39,7 +39,7 @@ import { map } from '../map/core/MapView';
 import useSettingsStyles from './common/useSettingsStyles';
 
 const UserPage = () => {
-  const classes = useSettingsStyles();
+  const { classes } = useSettingsStyles();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const t = useTranslation();

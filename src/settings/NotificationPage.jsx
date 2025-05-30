@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import {
   Accordion,
@@ -21,7 +21,7 @@ import { useCatch } from '../reactHelper';
 import useSettingsStyles from './common/useSettingsStyles';
 
 const NotificationPage = () => {
-  const classes = useSettingsStyles();
+  const { classes } = useSettingsStyles();
   const t = useTranslation();
 
   const [item, setItem] = useState();

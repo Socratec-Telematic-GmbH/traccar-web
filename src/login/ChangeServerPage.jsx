@@ -1,11 +1,12 @@
-import React from 'react';
-import ElectricalServicesIcon from '@mui/icons-material/ElectricalServices';
-import { makeStyles } from '@mui/styles';
+import { useState } from 'react';
+import VpnLockIcon from '@mui/icons-material/VpnLock';
+import { makeStyles } from 'tss-react/mui';
 import {
   Autocomplete, Button, Container, createFilterOptions, TextField,
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from '../common/components/LocalizationProvider';
+import Loader from '../common/components/Loader';
 
 const currentServer = `${window.location.protocol}//${window.location.host}`;
 
@@ -20,10 +21,10 @@ const officialServers = [
   'http://localhost:3000',
 ];
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles()((theme) => ({
   icon: {
     textAlign: 'center',
-    fontSize: '128px',
+    fontSize: '10rem',
     color: theme.palette.neutral.main,
   },
   container: {
@@ -36,13 +37,15 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ChangeServerPage = () => {
-  const classes = useStyles();
+  const { classes } = useStyles();
   const navigate = useNavigate();
   const t = useTranslation();
 
   const filter = createFilterOptions();
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = (url) => {
+    setLoading(true);
     if (window.webkit && window.webkit.messageHandlers.appInterface) {
       window.webkit.messageHandlers.appInterface.postMessage(`server|${url}`);
     } else if (window.appInterface) {
@@ -52,9 +55,12 @@ const ChangeServerPage = () => {
     }
   };
 
+  if (loading) {
+    return <Loader />;
+  }
   return (
     <Container maxWidth="xs" className={classes.container}>
-      <ElectricalServicesIcon className={classes.icon} />
+      <VpnLockIcon className={classes.icon} />
       <Autocomplete
         freeSolo
         className={classes.field}

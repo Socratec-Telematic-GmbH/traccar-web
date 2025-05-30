@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import {
   FormControl, InputLabel, Select, MenuItem, Button, TextField, Typography,
 } from '@mui/material';
@@ -14,7 +14,7 @@ import { useRestriction } from '../../common/util/permissions';
 const ReportFilter = ({
   children, handleSubmit, handleSchedule, showOnly, ignoreDevice, multiDevice, includeGroups, loading,
 }) => {
-  const classes = useReportStyles();
+  const { classes } = useReportStyles();
   const dispatch = useDispatch();
   const t = useTranslation();
 

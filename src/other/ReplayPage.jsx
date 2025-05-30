@@ -1,11 +1,10 @@
-import React, {
+import {
   useState, useEffect, useRef, useCallback,
 } from 'react';
 import {
   IconButton, Paper, Slider, Toolbar, Typography,
 } from '@mui/material';
-import makeStyles from '@mui/styles/makeStyles';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { makeStyles } from 'tss-react/mui';
 import TuneIcon from '@mui/icons-material/Tune';
 import DownloadIcon from '@mui/icons-material/Download';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
@@ -26,8 +25,9 @@ import MapCamera from '../map/MapCamera';
 import MapGeofence from '../map/MapGeofence';
 import StatusCard from '../common/components/StatusCard';
 import MapScale from '../map/MapScale';
+import BackIcon from '../common/components/BackIcon';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles()((theme) => ({
   root: {
     height: '100%',
   },
@@ -78,7 +78,7 @@ const useStyles = makeStyles((theme) => ({
 
 const ReplayPage = () => {
   const t = useTranslation();
-  const classes = useStyles();
+  const { classes } = useStyles();
   const navigate = useNavigate();
   const timerRef = useRef();
 
@@ -168,7 +168,7 @@ const ReplayPage = () => {
         <MapRoutePath positions={positions} />
         <MapRoutePoints positions={positions} onClick={onPointClick} />
         {index < positions.length && (
-          <MapPositions positions={[positions[index]]} onClick={onMarkerClick} titleField="fixTime" />
+          <MapPositions positions={[positions[index]]} onMarkerClick={onMarkerClick} titleField="fixTime" />
         )}
       </MapView>
       <MapScale />
@@ -177,7 +177,7 @@ const ReplayPage = () => {
         <Paper elevation={3} square>
           <Toolbar>
             <IconButton edge="start" sx={{ mr: 2 }} onClick={() => navigate(-1)}>
-              <ArrowBackIcon />
+              <BackIcon />
             </IconButton>
             <Typography variant="h6" className={classes.title}>{t('reportReplay')}</Typography>
             {!expanded && (

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -20,7 +20,7 @@ import DeviceUsersValue from './components/DeviceUsersValue';
 import usePersistedState from '../common/util/usePersistedState';
 
 const DevicesPage = () => {
-  const classes = useSettingsStyles();
+  const { classes } = useSettingsStyles();
   const navigate = useNavigate();
   const t = useTranslation();
 

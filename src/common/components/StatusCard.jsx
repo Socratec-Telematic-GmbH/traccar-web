@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, Link as RouterLink } from 'react-router-dom';
-import Draggable from 'react-draggable';
+import { Rnd } from 'react-rnd';
 import {
   Card,
   CardContent,
@@ -19,7 +19,7 @@ import {
   Link,
   Tooltip,
 } from '@mui/material';
-import makeStyles from '@mui/styles/makeStyles';
+import { makeStyles } from 'tss-react/mui';
 import CloseIcon from '@mui/icons-material/Close';
 import ReplayIcon from '@mui/icons-material/Replay';
 import PublishIcon from '@mui/icons-material/Publish';
@@ -36,7 +36,7 @@ import { devicesActions } from '../../store';
 import { useCatch, useCatchCallback } from '../../reactHelper';
 import { useAttributePreference } from '../util/preferences';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles()((theme, { desktopPadding }) => ({
   card: {
     pointerEvents: 'auto',
     width: theme.dimensions.popupMaxWidth,
@@ -73,7 +73,7 @@ const useStyles = makeStyles((theme) => ({
       paddingLeft: 0,
       paddingRight: 0,
     },
-    '& .MuiTableCell-sizeSmall:first-child': {
+    '& .MuiTableCell-sizeSmall:first-of-type': {
       paddingRight: theme.spacing(1),
     },
   },
@@ -83,7 +83,7 @@ const useStyles = makeStyles((theme) => ({
   actions: {
     justifyContent: 'space-between',
   },
-  root: ({ desktopPadding }) => ({
+  root: {
     pointerEvents: 'none',
     position: 'fixed',
     zIndex: 5,
@@ -97,11 +97,11 @@ const useStyles = makeStyles((theme) => ({
       bottom: `calc(${theme.spacing(3)} + ${theme.dimensions.bottomBarHeight}px)`,
     },
     transform: 'translateX(-50%)',
-  }),
+  },
 }));
 
 const StatusRow = ({ name, content }) => {
-  const classes = useStyles();
+  const { classes } = useStyles({ desktopPadding: 0 });
 
   return (
     <TableRow>
@@ -116,7 +116,7 @@ const StatusRow = ({ name, content }) => {
 };
 
 const StatusCard = ({ deviceId, position, onClose, disableActions, desktopPadding = 0 }) => {
-  const classes = useStyles({ desktopPadding });
+  const { classes } = useStyles({ desktopPadding });
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const t = useTranslation();
@@ -181,13 +181,16 @@ const StatusCard = ({ deviceId, position, onClose, disableActions, desktopPaddin
     <>
       <div className={classes.root}>
         {device && (
-          <Draggable
-            handle={`.${classes.media}, .${classes.header}`}
+          <Rnd
+            default={{ x: 0, y: 0, width: 'auto', height: 'auto' }}
+            enableResizing={false}
+            dragHandleClassName="draggable-header"
+            style={{ position: 'relative' }}
           >
             <Card elevation={3} className={classes.card}>
               {deviceImage ? (
                 <CardMedia
-                  className={classes.media}
+                  className={`${classes.media} draggable-header`}
                   image={`/api/media/${device.uniqueId}/${deviceImage}`}
                 >
                   <IconButton
@@ -199,7 +202,7 @@ const StatusCard = ({ deviceId, position, onClose, disableActions, desktopPaddin
                   </IconButton>
                 </CardMedia>
               ) : (
-                <div className={classes.header}>
+                <div className={`${classes.header} draggable-header`}>
                   <Typography variant="body2" color="textSecondary">
                     {device.name}
                   </Typography>
@@ -288,7 +291,7 @@ const StatusCard = ({ deviceId, position, onClose, disableActions, desktopPaddin
                 </Tooltip>
               </CardActions>
             </Card>
-          </Draggable>
+          </Rnd>
         )}
       </div>
       {position && (

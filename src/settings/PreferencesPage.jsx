@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import dayjs from 'dayjs';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -30,7 +30,7 @@ const deviceFields = [
 ];
 
 const PreferencesPage = () => {
-  const classes = useSettingsStyles();
+  const { classes } = useSettingsStyles();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const t = useTranslation();
@@ -41,7 +41,7 @@ const PreferencesPage = () => {
   const user = useSelector((state) => state.session.user);
   const [attributes, setAttributes] = useState(user.attributes);
 
-  const versionApp = import.meta.env.VITE_APP_VERSION.slice(0, -2);
+  const versionApp = import.meta.env.VITE_APP_VERSION;
   const versionServer = useSelector((state) => state.session.server.version);
   const socket = useSelector((state) => state.session.socket);
 

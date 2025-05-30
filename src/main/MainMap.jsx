@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useDispatch, useSelector } from 'react-redux';
@@ -42,7 +42,7 @@ const MainMap = ({ filteredPositions, selectedPosition, onEventsClick }) => {
         <MapLiveRoutes />
         <MapPositions
           positions={filteredPositions}
-          onClick={onMarkerClick}
+          onMarkerClick={onMarkerClick}
           selectedPosition={selectedPosition}
           showStatus
         />
@@ -57,7 +57,7 @@ const MainMap = ({ filteredPositions, selectedPosition, onEventsClick }) => {
         <MapNotification enabled={eventsAvailable} onClick={onEventsClick} />
       )}
       {desktop && (
-        <MapPadding left={parseInt(theme.dimensions.drawerWidthDesktop, 10) + parseInt(theme.spacing(1.5), 10)} />
+        <MapPadding start={parseInt(theme.dimensions.drawerWidthDesktop, 10) + parseInt(theme.spacing(1.5), 10)} />
       )}
     </>
   );
