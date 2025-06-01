@@ -28,7 +28,6 @@ const useStyles = makeStyles()((theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
     flex: 1,
-    boxShadow: '-2px 0px 16px rgba(0, 0, 0, 0.25)',
     [theme.breakpoints.up('lg')]: {
       padding: theme.spacing(0, 25, 0, 0),
     },
@@ -49,7 +48,7 @@ const LoginLayout = ({ children }) => {
       <div className={classes.sidebar}>
         {!useMediaQuery(theme.breakpoints.down('lg')) && <LogoImage color={theme.palette.secondary.contrastText} />}
       </div>
-      <Paper className={classes.paper}>
+      <Paper elevation="0" className={classes.paper}>
         <form className={classes.form}>
           {children}
         </form>
