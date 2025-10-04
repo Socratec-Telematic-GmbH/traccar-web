@@ -3,14 +3,14 @@ import dayjs from 'dayjs';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffectAsync } from '../../reactHelper';
 import { sessionActions } from '../../store';
+import fetchOrThrow from '../util/fetchOrThrow';
 
 export const nativeEnvironment = window.appInterface || (window.webkit && window.webkit.messageHandlers.appInterface);
 
 export const nativePostMessage = (message) => {
   if (window.webkit && window.webkit.messageHandlers.appInterface) {
     window.webkit.messageHandlers.appInterface.postMessage(message);
-  }
-  if (window.appInterface) {
+  } else if (window.appInterface) {
     window.appInterface.postMessage(message);
   }
 };
@@ -76,17 +76,12 @@ const NativeInterface = () => {
           },
         };
 
-        const response = await fetch(`/api/users/${user.id}`, {
+        const response = await fetchOrThrow(`/api/users/${user.id}`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(updatedUser),
         });
-
-        if (response.ok) {
-          dispatch(sessionActions.updateUser(await response.json()));
-        } else {
-          throw Error(await response.text());
-        }
+        dispatch(sessionActions.updateUser(await response.json()));
       }
     }
   }, [user, notificationToken, setNotificationToken]);

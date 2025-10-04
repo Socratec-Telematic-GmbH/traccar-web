@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import {
   Accordion,
   AccordionSummary,
@@ -32,11 +32,11 @@ import SelectField from '../common/components/SelectField';
 import SettingsMenu from './components/SettingsMenu';
 import useCommonUserAttributes from '../common/attributes/useCommonUserAttributes';
 import { useAdministrator, useRestriction, useManager } from '../common/util/permissions';
-import useQuery from '../common/util/useQuery';
 import { useCatch } from '../reactHelper';
 import useMapStyles from '../map/core/useMapStyles';
 import { map } from '../map/core/MapView';
 import useSettingsStyles from './common/useSettingsStyles';
+import fetchOrThrow from '../common/util/fetchOrThrow';
 
 const UserPage = () => {
   const { classes } = useSettingsStyles();
@@ -67,41 +67,33 @@ const UserPage = () => {
   const handleDelete = useCatch(async () => {
     if (deleteEmail === currentUser.email) {
       setDeleteFailed(false);
-      const response = await fetch(`/api/users/${currentUser.id}`, { method: 'DELETE' });
-      if (response.ok) {
-        navigate('/login');
-        dispatch(sessionActions.updateUser(null));
-      } else {
-        throw Error(await response.text());
-      }
+      await fetchOrThrow(`/api/users/${currentUser.id}`, { method: 'DELETE' });
+      navigate('/login');
+      dispatch(sessionActions.updateUser(null));
     } else {
       setDeleteFailed(true);
     }
   });
 
   const handleGenerateTotp = useCatch(async () => {
-    const response = await fetch('/api/users/totp', { method: 'POST' });
-    if (response.ok) {
-      setItem({ ...item, totpKey: await response.text() });
-    } else {
-      throw Error(await response.text());
-    }
+    const response = await fetchOrThrow('/api/users/totp', { method: 'POST' });
+    setItem({ ...item, totpKey: await response.text() });
   });
 
-  const query = useQuery();
-  const [queryHandled, setQueryHandled] = useState(false);
-  const attribute = query.get('attribute');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const attribute = searchParams.get('attribute');
 
   useEffect(() => {
-    if (!queryHandled && item && attribute) {
-      if (!item.attributes.hasOwnProperty('attribute')) {
-        const updatedAttributes = { ...item.attributes };
-        updatedAttributes[attribute] = '';
-        setItem({ ...item, attributes: updatedAttributes });
-      }
-      setQueryHandled(true);
+    if (item && attribute && !item.attributes.hasOwnProperty('attribute')) {
+      const updatedAttributes = { ...item.attributes };
+      updatedAttributes[attribute] = '';
+      setItem({ ...item, attributes: updatedAttributes });
+
+      const newParams = new URLSearchParams(searchParams);
+      newParams.delete('attribute');
+      setSearchParams(newParams, { replace: true });
     }
-  }, [item, queryHandled, setQueryHandled, attribute]);
+  }, [item, searchParams, setSearchParams, attribute]);
 
   const onItemSaved = (result) => {
     if (result.id === currentUser.id) {

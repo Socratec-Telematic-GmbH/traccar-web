@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import {
   Accordion,
   AccordionSummary,
@@ -7,6 +8,7 @@ import {
   FormControlLabel,
   Checkbox,
   TextField,
+  Button,
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { MuiFileInput } from 'mui-file-input';
@@ -20,8 +22,9 @@ import { useAdministrator } from '../common/util/permissions';
 import SettingsMenu from './components/SettingsMenu';
 import useCommonDeviceAttributes from '../common/attributes/useCommonDeviceAttributes';
 import { useCatch } from '../reactHelper';
-import useQuery from '../common/util/useQuery';
 import useSettingsStyles from './common/useSettingsStyles';
+import QrCodeDialog from '../common/components/QrCodeDialog';
+import fetchOrThrow from '../common/util/fetchOrThrow';
 
 const DevicePage = () => {
   const { classes } = useSettingsStyles();
@@ -32,24 +35,21 @@ const DevicePage = () => {
   const commonDeviceAttributes = useCommonDeviceAttributes(t);
   const deviceAttributes = useDeviceAttributes(t);
 
-  const query = useQuery();
-  const uniqueId = query.get('uniqueId');
+  const [searchParams] = useSearchParams();
+  const uniqueId = searchParams.get('uniqueId');
 
   const [item, setItem] = useState(uniqueId ? { uniqueId } : null);
+  const [showQr, setShowQr] = useState(false);
   const [imageFile, setImageFile] = useState(null);
 
   const handleFileInput = useCatch(async (newFile) => {
     setImageFile(newFile);
     if (newFile && item?.id) {
-      const response = await fetch(`/api/devices/${item.id}/image`, {
+      const response = await fetchOrThrow(`/api/devices/${item.id}/image`, {
         method: 'POST',
         body: newFile,
       });
-      if (response.ok) {
-        setItem({ ...item, attributes: { ...item.attributes, deviceImage: await response.text() } });
-      } else {
-        throw Error(await response.text());
-      }
+      setItem({ ...item, attributes: { ...item.attributes, deviceImage: await response.text() } });
     } else if (!newFile) {
       // eslint-disable-next-line no-unused-vars
       const { deviceImage, ...remainingAttributes } = item.attributes || {};
@@ -150,6 +150,13 @@ const DevicePage = () => {
                 label={t('sharedDisabled')}
                 disabled={!admin}
               />
+              <Button
+                variant="outlined"
+                color="primary"
+                onClick={() => setShowQr(true)}
+              >
+                {t('sharedQrCode')}
+              </Button>
             </AccordionDetails>
           </Accordion>
           {item.id && (
@@ -176,6 +183,7 @@ const DevicePage = () => {
           />
         </>
       )}
+      <QrCodeDialog open={showQr} onClose={() => setShowQr(false)} />
     </EditItemView>
   );
 };
