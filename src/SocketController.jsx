@@ -1,5 +1,5 @@
 import {
- useCallback, useEffect, useRef, useState 
+  useCallback, useEffect, useRef, useState,
 } from 'react';
 import { useDispatch, useSelector, connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -11,7 +11,8 @@ import alarm from './resources/alarm.mp3';
 import { eventsActions } from './store/events';
 import useFeatures from './common/util/useFeatures';
 import { useAttributePreference } from './common/util/preferences';
-import { handleNativeNotificationListeners } from './common/components/NativeInterface';
+import { handleNativeNotificationListeners, nativePostMessage } from './common/components/NativeInterface';
+import fetchOrThrow from './common/util/fetchOrThrow';
 
 const logoutCode = 4000;
 
@@ -19,7 +20,7 @@ const SocketController = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const authenticated = useSelector((state) => !!state.session.user);
+  const authenticated = useSelector((state) => Boolean(state.session.user));
   const includeLogs = useSelector((state) => state.session.includeLogs);
 
   const socketRef = useRef();
@@ -35,7 +36,8 @@ const SocketController = () => {
     if (!features.disableEvents) {
       dispatch(eventsActions.add(events));
     }
-    if (events.some(e => soundEvents.includes(e.type) || (e.type === 'alarm' && soundAlarms.includes(e.attributes.alarm)))) {
+    if (events.some((e) => soundEvents.includes(e.type)
+        || (e.type === 'alarm' && soundAlarms.includes(e.attributes.alarm)))) {
       new Audio(alarm).play();
     }
     setNotifications(events.map((event) => ({
@@ -43,7 +45,7 @@ const SocketController = () => {
       message: event.attributes.message,
       show: true,
     })));
-  }, [features, dispatch, soundEvents, soundAlarms, setNotifications]);
+  }, [features, dispatch, soundEvents, soundAlarms]);
 
   const connectSocket = () => {
     const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
@@ -72,7 +74,7 @@ const SocketController = () => {
         } catch {
           // ignore errors
         }
-        setTimeout(() => connectSocket(), 60000);
+        setTimeout(connectSocket, 60000);
       }
     };
 
@@ -95,22 +97,16 @@ const SocketController = () => {
 
   useEffect(() => {
     socketRef.current?.send(JSON.stringify({ logs: includeLogs }));
-  }, [socketRef, includeLogs]);
+  }, [includeLogs]);
 
   useEffectAsync(async () => {
     if (authenticated) {
-      const response = await fetch('/api/devices');
-      if (response.ok) {
-        dispatch(devicesActions.refresh(await response.json()));
-      } else {
-        throw Error(await response.text());
-      }
+      const response = await fetchOrThrow('/api/devices');
+      dispatch(devicesActions.refresh(await response.json()));
+      nativePostMessage('authenticated');
       connectSocket();
       return () => {
-        const socket = socketRef.current;
-        if (socket) {
-          socket.close(logoutCode);
-        }
+        socketRef.current?.close(logoutCode);
       };
     }
     return null;
@@ -132,10 +128,36 @@ const SocketController = () => {
   }, [handleEvents]);
 
   useEffect(() => {
-    const listener = handleNativeNotification;
-    handleNativeNotificationListeners.add(listener);
-    return () => handleNativeNotificationListeners.delete(listener);
+    handleNativeNotificationListeners.add(handleNativeNotification);
+    return () => handleNativeNotificationListeners.delete(handleNativeNotification);
   }, [handleNativeNotification]);
+
+  useEffect(() => {
+    if (!authenticated) return;
+    const reconnectIfNeeded = () => {
+      const socket = socketRef.current;
+      if (!socket || socket.readyState === WebSocket.CLOSED) {
+        connectSocket();
+      } else if (socket.readyState === WebSocket.OPEN) {
+        try {
+          socket.send('{}');
+        } catch {
+          // test connection
+        }
+      }
+    };
+    const onVisibility = () => {
+      if (!document.hidden) {
+        reconnectIfNeeded();
+      }
+    };
+    window.addEventListener('online', reconnectIfNeeded);
+    document.addEventListener('visibilitychange', onVisibility);
+    return () => {
+      window.removeEventListener('online', reconnectIfNeeded);
+      document.removeEventListener('visibilitychange', onVisibility);
+    };
+  }, [authenticated]);
 
   return (
     <>

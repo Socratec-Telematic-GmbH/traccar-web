@@ -8,10 +8,10 @@ import globals from 'globals';
 export default [
   {
     ignores: [
-      'legacy/**',
       'build/**',
       'switcher.js',
       'theme.js',
+      'vite.config.js',
     ],
   },
   js.configs.recommended,

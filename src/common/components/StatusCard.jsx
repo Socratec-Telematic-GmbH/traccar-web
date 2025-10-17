@@ -21,8 +21,8 @@ import {
 } from '@mui/material';
 import { makeStyles } from 'tss-react/mui';
 import CloseIcon from '@mui/icons-material/Close';
-import ReplayIcon from '@mui/icons-material/Replay';
-import PublishIcon from '@mui/icons-material/Publish';
+import RouteIcon from '@mui/icons-material/Route';
+import SendIcon from '@mui/icons-material/Send';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import PendingIcon from '@mui/icons-material/Pending';
@@ -30,11 +30,12 @@ import PendingIcon from '@mui/icons-material/Pending';
 import { useTranslation } from './LocalizationProvider';
 import RemoveDialog from './RemoveDialog';
 import PositionValue from './PositionValue';
-import { useDeviceReadonly } from '../util/permissions';
+import { useDeviceReadonly, useRestriction } from '../util/permissions';
 import usePositionAttributes from '../attributes/usePositionAttributes';
 import { devicesActions } from '../../store';
 import { useCatch, useCatchCallback } from '../../reactHelper';
 import { useAttributePreference } from '../util/preferences';
+import fetchOrThrow from '../util/fetchOrThrow';
 
 const useStyles = makeStyles()((theme, { desktopPadding }) => ({
   card: {
@@ -121,6 +122,7 @@ const StatusCard = ({ deviceId, position, onClose, disableActions, desktopPaddin
   const dispatch = useDispatch();
   const t = useTranslation();
 
+  const readonly = useRestriction('readonly');
   const deviceReadonly = useDeviceReadonly();
 
   const shareDisabled = useSelector((state) => state.session.server.attributes.disableShare);
@@ -141,12 +143,8 @@ const StatusCard = ({ deviceId, position, onClose, disableActions, desktopPaddin
 
   const handleRemove = useCatch(async (removed) => {
     if (removed) {
-      const response = await fetch('/api/devices');
-      if (response.ok) {
-        dispatch(devicesActions.refresh(await response.json()));
-      } else {
-        throw Error(await response.text());
-      }
+      const response = await fetchOrThrow('/api/devices');
+      dispatch(devicesActions.refresh(await response.json()));
     }
     setRemoving(false);
   });
@@ -156,25 +154,18 @@ const StatusCard = ({ deviceId, position, onClose, disableActions, desktopPaddin
       name: t('sharedGeofence'),
       area: `CIRCLE (${position.latitude} ${position.longitude}, 50)`,
     };
-    const response = await fetch('/api/geofences', {
+    const response = await fetchOrThrow('/api/geofences', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newItem),
     });
-    if (response.ok) {
-      const item = await response.json();
-      const permissionResponse = await fetch('/api/permissions', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ deviceId: position.deviceId, geofenceId: item.id }),
-      });
-      if (!permissionResponse.ok) {
-        throw Error(await permissionResponse.text());
-      }
-      navigate(`/settings/geofence/${item.id}`);
-    } else {
-      throw Error(await response.text());
-    }
+    const item = await response.json();
+    await fetchOrThrow('/api/permissions', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ deviceId: position.deviceId, geofenceId: item.id }),
+    });
+    navigate(`/settings/geofence/${item.id}`);
   }, [navigate, position]);
 
   return (
@@ -258,10 +249,10 @@ const StatusCard = ({ deviceId, position, onClose, disableActions, desktopPaddin
                 </Tooltip>
                 <Tooltip title={t('reportReplay')}>
                   <IconButton
-                    onClick={() => navigate('/replay')}
+                    onClick={() => navigate(`/replay?deviceId=${deviceId}`)}
                     disabled={disableActions || !position}
                   >
-                    <ReplayIcon />
+                    <RouteIcon />
                   </IconButton>
                 </Tooltip>
                 <Tooltip title={t('commandTitle')}>
@@ -269,7 +260,7 @@ const StatusCard = ({ deviceId, position, onClose, disableActions, desktopPaddin
                     onClick={() => navigate(`/settings/device/${deviceId}/command`)}
                     disabled={disableActions}
                   >
-                    <PublishIcon />
+                    <SendIcon />
                   </IconButton>
                 </Tooltip>
                 <Tooltip title={t('sharedEdit')}>
@@ -296,7 +287,7 @@ const StatusCard = ({ deviceId, position, onClose, disableActions, desktopPaddin
       </div>
       {position && (
         <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={() => setAnchorEl(null)}>
-          <MenuItem onClick={handleGeofence}>{t('sharedCreateGeofence')}</MenuItem>
+          {!readonly && <MenuItem onClick={handleGeofence}>{t('sharedCreateGeofence')}</MenuItem>}
           <MenuItem component="a" target="_blank" href={`https://www.google.com/maps/search/?api=1&query=${position.latitude}%2C${position.longitude}`}>{t('linkGoogleMaps')}</MenuItem>
           <MenuItem component="a" target="_blank" href={`http://maps.apple.com/?ll=${position.latitude},${position.longitude}`}>{t('linkAppleMaps')}</MenuItem>
           <MenuItem component="a" target="_blank" href={`https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=${position.latitude}%2C${position.longitude}&heading=${position.course}`}>{t('linkStreetView')}</MenuItem>

@@ -48,16 +48,20 @@ const useStyles = makeStyles()((theme) => ({
   neutral: {
     color: theme.palette.neutral.main,
   },
+  selected: {
+    backgroundColor: theme.palette.action.selected,
+  },
 }));
 
-const DeviceRow = ({ data, index, style }) => {
+const DeviceRow = ({ devices, index, style }) => {
   const { classes } = useStyles();
   const dispatch = useDispatch();
   const t = useTranslation();
 
   const admin = useAdministrator();
+  const selectedDeviceId = useSelector((state) => state.devices.selectedId);
 
-  const item = data[index];
+  const item = devices[index];
   const position = useSelector((state) => state.session.positions[item.id]);
 
   const devicePrimary = useAttributePreference('devicePrimary', 'name');
@@ -84,6 +88,8 @@ const DeviceRow = ({ data, index, style }) => {
         key={item.id}
         onClick={() => dispatch(devicesActions.selectId(item.id))}
         disabled={!admin && item.disabled}
+        selected={selectedDeviceId === item.id}
+        className={selectedDeviceId === item.id ? classes.selected : null}
       >
         <ListItemAvatar>
           <Avatar>

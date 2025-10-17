@@ -16,7 +16,9 @@ const ErrorHandler = () => {
 
   const message = error || cachedError;
   const multiline = message?.includes('\n');
-  const displayMessage = multiline ? message.split('\n')[0] : message;
+  const displayMessage = multiline
+    ? message.split('\n')[0].replace(/^(?:(?:[\w$]+\.)*[\w$]+(?:Exception|Error)?:\s*)+/i, '')
+    : message;
 
   const [expanded, setExpanded] = useState(false);
 
@@ -44,9 +46,9 @@ const ErrorHandler = () => {
         maxWidth={false}
       >
         <DialogContent>
-          <DialogContentText>
-            <Typography variant="caption">
-              <pre>{message}</pre>
+          <DialogContentText component="div">
+            <Typography component="pre" variant="caption">
+              {message}
             </Typography>
           </DialogContentText>
         </DialogContent>
