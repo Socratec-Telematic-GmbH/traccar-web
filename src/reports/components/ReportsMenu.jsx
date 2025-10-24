@@ -10,6 +10,7 @@ import BarChartIcon from '@mui/icons-material/BarChart';
 import RouteIcon from '@mui/icons-material/Route';
 import EventRepeatIcon from '@mui/icons-material/EventRepeat';
 import NotesIcon from '@mui/icons-material/Notes';
+import MenuBookIcon from '@mui/icons-material/MenuBook';
 import { useLocation } from 'react-router-dom';
 import { useTranslation } from '../../common/components/LocalizationProvider';
 import { useAdministrator, useRestriction } from '../../common/util/permissions';
@@ -48,6 +49,12 @@ const ReportsMenu = () => {
           link="/reports/trip"
           icon={<PlayCircleFilledIcon />}
           selected={location.pathname === '/reports/trip'}
+        />
+        <MenuItem
+          title={t('socratec_reportTripsLogbook')}
+          link="/socratec/reports/trips-logbook"
+          icon={<MenuBookIcon />}
+          selected={location.pathname === '/socratec/reports/trips-logbook'}
         />
         <MenuItem
           title={t('reportStops')}
