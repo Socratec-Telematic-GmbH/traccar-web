@@ -1,14 +1,13 @@
 import { useState } from 'react';
 import {
-  IconButton, Table, TableBody, TableCell, TableHead, TableRow, Button, Typography, Box,
+  IconButton, Table, TableBody, TableCell, TableHead, TableRow,
 } from '@mui/material';
-import RefreshIcon from '@mui/icons-material/Refresh';
 import GpsFixedIcon from '@mui/icons-material/GpsFixed';
 import LocationSearchingIcon from '@mui/icons-material/LocationSearching';
-import { useSelector } from 'react-redux';
 import {
   formatDistance, formatSpeed, formatVolume, formatTime, formatNumericHours,
 } from '../../common/util/formatter';
+import ReportFilter from '../../reports/components/ReportFilter';
 import { useAttributePreference } from '../../common/util/preferences';
 import { useTranslation } from '../../common/components/LocalizationProvider';
 import PageLayout from '../../common/components/PageLayout';
@@ -25,7 +24,6 @@ import MapMarkers from '../../map/MapMarkers';
 import MapCamera from '../../map/MapCamera';
 import MapGeofence from '../../map/MapGeofence';
 import MapScale from '../../map/MapScale';
-import { useAdministrator } from '../../common/util/permissions';
 
 const columnsArray = [
   ['startTime', 'reportStartTime'],
@@ -40,21 +38,19 @@ const columnsArray = [
   ['duration', 'reportDuration'],
   ['spentFuel', 'reportSpentFuel'],
   ['driverName', 'sharedDriver'],
+  ['type', 'socratec_logbookEntryType'],
 ];
 const columnsMap = new Map(columnsArray);
 
-const TripsLogbookPage = () => {
+const LogbookEntryReportPage = () => {
   const { classes } = useReportStyles();
   const t = useTranslation();
-
-  const admin = useAdministrator();
-  const user = useSelector((state) => state.session.user);
 
   const distanceUnit = useAttributePreference('distanceUnit');
   const speedUnit = useAttributePreference('speedUnit');
   const volumeUnit = useAttributePreference('volumeUnit');
 
-  const [columns, setColumns] = usePersistedState('tripsLogbookColumns', ['startTime', 'endTime', 'distance', 'averageSpeed']);
+  const [columns, setColumns] = usePersistedState('logbookEntryColumns', ['startTime', 'endTime', 'distance', 'averageSpeed', 'type']);
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
@@ -95,27 +91,24 @@ const TripsLogbookPage = () => {
     }
   }, [selectedItem]);
 
-  // Load trips automatically on component mount
-  useEffectAsync(async () => {
-    loadTrips();
-  }, []);
+  const handleSubmit = useCatch(async ({ deviceIds, groupIds, from, to }) => {
+    const query = new URLSearchParams({ from, to });
+    
+    // Add deviceIds if provided
+    if (deviceIds && deviceIds.length > 0) {
+      deviceIds.forEach(deviceId => query.append('deviceId', deviceId));
+    }
+    
+    // Add groupIds if provided
+    if (groupIds && groupIds.length > 0) {
+      groupIds.forEach(groupId => query.append('groupId', groupId));
+    }
 
-  const loadTrips = useCatch(async () => {
     setLoading(true);
     try {
-      const query = new URLSearchParams();
-      
-      // Use correct API parameters based on user permissions
-      if (admin) {
-        query.append('all', 'true');
-      } else if (user?.id) {
-        query.append('userId', user.id.toString());
-      }
-
-      const response = await fetch(`/api/trips?${query.toString()}`, {
+      const response = await fetch(`/api/reports/logbook?${query.toString()}`, {
         headers: { Accept: 'application/json' },
       });
-      
       if (response.ok) {
         setItems(await response.json());
       } else {
@@ -125,6 +118,18 @@ const TripsLogbookPage = () => {
       setLoading(false);
     }
   });
+
+  const formatLogbookEntryType = (type) => {
+    switch (type) {
+      case 1:
+        return t('socratec_logbookTypeBusiness');
+      case 2:
+        return t('socratec_logbookTypePrivate');
+      case 0:
+      default:
+        return t('socratec_logbookTypeNone');
+    }
+  };
 
   const formatValue = (item, key) => {
     const value = item[key];
@@ -148,16 +153,18 @@ const TripsLogbookPage = () => {
       case 'endAddress':
         return (<AddressValue latitude={item.endLat} longitude={item.endLon} originalAddress={value} />);
       case 'driverName':
-        // Note: The new API provides driverId, but we might need to resolve driver names separately
+        // Note: The API provides driverId, but we might need to resolve driver names separately
         // For now, we'll show the driverId if available
         return item.driverId || null;
+      case 'type':
+        return formatLogbookEntryType(value);
       default:
         return value;
     }
   };
 
   return (
-    <PageLayout menu={<ReportsMenu />} breadcrumbs={['reportTitle', 'socratec_reportTripsLogbook']}>
+    <PageLayout menu={<ReportsMenu />} breadcrumbs={['reportTitle', 'socratec_reportLogbookEntries']}>
       <div className={classes.container}>
         {selectedItem && (
           <div className={classes.containerMap}>
@@ -176,20 +183,9 @@ const TripsLogbookPage = () => {
         )}
         <div className={classes.containerMain}>
           <div className={classes.header}>
-            <Box display="flex" alignItems="center" gap={2} mb={2}>
-              <Typography variant="h6" component="h2">
-                {t('socratec_reportTripsLogbook')}
-              </Typography>
-              <Button
-                variant="outlined"
-                startIcon={<RefreshIcon />}
-                onClick={loadTrips}
-                disabled={loading}
-              >
-                {t(loading ? 'sharedLoading' : 'socratec_refresh')}
-              </Button>
+            <ReportFilter handleSubmit={handleSubmit} loading={loading}>
               <ColumnSelect columns={columns} setColumns={setColumns} columnsArray={columnsArray} />
-            </Box>
+            </ReportFilter>
           </div>
           <Table>
             <TableHead>
@@ -227,4 +223,4 @@ const TripsLogbookPage = () => {
   );
 };
 
-export default TripsLogbookPage;
+export default LogbookEntryReportPage;

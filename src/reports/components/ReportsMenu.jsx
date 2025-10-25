@@ -51,10 +51,10 @@ const ReportsMenu = () => {
           selected={location.pathname === '/reports/trip'}
         />
         <MenuItem
-          title={t('socratec_reportTripsLogbook')}
-          link="/socratec/reports/trips-logbook"
+          title={t('socratec_reportLogbookEntries')}
+          link="/socratec/reports/logbook-entries"
           icon={<MenuBookIcon />}
-          selected={location.pathname === '/socratec/reports/trips-logbook'}
+          selected={location.pathname === '/socratec/reports/logbook-entries'}
         />
         <MenuItem
           title={t('reportStops')}
