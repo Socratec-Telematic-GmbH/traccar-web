@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import {
   IconButton, Table, TableBody, TableCell, TableHead, TableRow,
+  Select, MenuItem, CircularProgress,
 } from '@mui/material';
 import GpsFixedIcon from '@mui/icons-material/GpsFixed';
 import LocationSearchingIcon from '@mui/icons-material/LocationSearching';
@@ -55,6 +56,7 @@ const LogbookEntryReportPage = () => {
   const [loading, setLoading] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
   const [route, setRoute] = useState(null);
+  const [updatingItems, setUpdatingItems] = useState(new Set());
 
   const createMarkers = () => ([
     {
@@ -106,7 +108,7 @@ const LogbookEntryReportPage = () => {
 
     setLoading(true);
     try {
-      const response = await fetch(`/api/reports/logbook?${query.toString()}`, {
+      const response = await fetch(`/api/logbook/report?${query.toString()}`, {
         headers: { Accept: 'application/json' },
       });
       if (response.ok) {
@@ -116,6 +118,38 @@ const LogbookEntryReportPage = () => {
       }
     } finally {
       setLoading(false);
+    }
+  });
+
+  const handleTypeUpdate = useCatch(async (itemId, newType) => {
+    setUpdatingItems(prev => new Set(prev).add(itemId));
+    
+    try {
+      const response = await fetch(`/api/logbook/${itemId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({ type: newType }),
+      });
+      
+      if (response.ok) {
+        const updatedItem = await response.json();
+        setItems(prevItems => 
+          prevItems.map(item => 
+            item.id === itemId ? updatedItem : item
+          )
+        );
+      } else {
+        throw Error(await response.text());
+      }
+    } finally {
+      setUpdatingItems(prev => {
+        const newSet = new Set(prev);
+        newSet.delete(itemId);
+        return newSet;
+      });
     }
   });
 
@@ -157,7 +191,19 @@ const LogbookEntryReportPage = () => {
         // For now, we'll show the driverId if available
         return item.driverId || null;
       case 'type':
-        return formatLogbookEntryType(value);
+        return (
+          <Select
+            value={value}
+            onChange={(e) => handleTypeUpdate(item.id, e.target.value)}
+            size="small"
+            disabled={updatingItems.has(item.id)}
+            sx={{ minWidth: 120 }}
+          >
+            <MenuItem value={0}>{t('socratec_logbookTypeNone')}</MenuItem>
+            <MenuItem value={1}>{t('socratec_logbookTypeBusiness')}</MenuItem>
+            <MenuItem value={2}>{t('socratec_logbookTypePrivate')}</MenuItem>
+          </Select>
+        );
       default:
         return value;
     }
@@ -210,7 +256,14 @@ const LogbookEntryReportPage = () => {
                   </TableCell>
                   {columns.map((key) => (
                     <TableCell key={key}>
-                      {formatValue(item, key)}
+                      {key === 'type' && updatingItems.has(item.id) ? (
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                          {formatValue(item, key)}
+                          <CircularProgress size={16} />
+                        </div>
+                      ) : (
+                        formatValue(item, key)
+                      )}
                     </TableCell>
                   ))}
                 </TableRow>
