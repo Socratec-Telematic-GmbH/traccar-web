@@ -131,7 +131,7 @@ const LogbookEntryReportPage = () => {
           'Content-Type': 'application/json',
           Accept: 'application/json',
         },
-        body: JSON.stringify({ type: newType }),
+        body: JSON.stringify({ type: newType, id: itemId }),
       });
       
       if (response.ok) {
