@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   IconButton, Table, TableBody, TableCell, TableHead, TableRow,
   Select, MenuItem, CircularProgress,
@@ -25,6 +26,7 @@ import MapMarkers from '../../map/MapMarkers';
 import MapCamera from '../../map/MapCamera';
 import MapGeofence from '../../map/MapGeofence';
 import MapScale from '../../map/MapScale';
+import scheduleReport from '../../reports/common/scheduleReport';
 
 const columnsArray = [
   ['startTime', 'reportStartTime'],
@@ -44,6 +46,7 @@ const columnsArray = [
 const columnsMap = new Map(columnsArray);
 
 const LogbookEntryReportPage = () => {
+  const navigate = useNavigate();
   const { classes } = useReportStyles();
   const t = useTranslation();
 
@@ -93,7 +96,7 @@ const LogbookEntryReportPage = () => {
     }
   }, [selectedItem]);
 
-  const handleSubmit = useCatch(async ({ deviceIds, groupIds, from, to }) => {
+  const handleSubmit = useCatch(async ({ deviceIds, groupIds, from, to, type }) => {
     const query = new URLSearchParams({ from, to });
     
     // Add deviceIds if provided
@@ -106,18 +109,37 @@ const LogbookEntryReportPage = () => {
       groupIds.forEach(groupId => query.append('groupId', groupId));
     }
 
-    setLoading(true);
-    try {
-      const response = await fetch(`/api/logbook/report?${query.toString()}`, {
-        headers: { Accept: 'application/json' },
-      });
-      if (response.ok) {
-        setItems(await response.json());
-      } else {
+    if (type === 'export') {
+      window.location.assign(`/api/report/logbook/xlsx?${query.toString()}`);
+    } else if (type === 'mail') {
+      const response = await fetch(`/api/report/logbook/mail?${query.toString()}`);
+      if (!response.ok) {
         throw Error(await response.text());
       }
-    } finally {
-      setLoading(false);
+    } else {
+      setLoading(true);
+      try {
+        const response = await fetch(`/api/logbook/report?${query.toString()}`, {
+          headers: { Accept: 'application/json' },
+        });
+        if (response.ok) {
+          setItems(await response.json());
+        } else {
+          throw Error(await response.text());
+        }
+      } finally {
+        setLoading(false);
+      }
+    }
+  });
+
+  const handleSchedule = useCatch(async (deviceIds, groupIds, report) => {
+    report.type = 'logbook';
+    const error = await scheduleReport(deviceIds, groupIds, report);
+    if (error) {
+      throw Error(error);
+    } else {
+      navigate('/reports/scheduled');
     }
   });
 
@@ -229,7 +251,7 @@ const LogbookEntryReportPage = () => {
         )}
         <div className={classes.containerMain}>
           <div className={classes.header}>
-            <ReportFilter handleSubmit={handleSubmit} loading={loading}>
+            <ReportFilter handleSubmit={handleSubmit} handleSchedule={handleSchedule} loading={loading}>
               <ColumnSelect columns={columns} setColumns={setColumns} columnsArray={columnsArray} />
             </ReportFilter>
           </div>
