@@ -110,16 +110,16 @@ const LogbookEntryReportPage = () => {
     }
 
     if (type === 'export') {
-      window.location.assign(`/api/report/logbook/xlsx?${query.toString()}`);
+      window.location.assign(`/api/reports/logbook/xlsx?${query.toString()}`);
     } else if (type === 'mail') {
-      const response = await fetch(`/api/report/logbook/mail?${query.toString()}`);
+      const response = await fetch(`/api/reports/logbook/mail?${query.toString()}`);
       if (!response.ok) {
         throw Error(await response.text());
       }
     } else {
       setLoading(true);
       try {
-        const response = await fetch(`/api/logbook/report?${query.toString()}`, {
+        const response = await fetch(`/api/reports/logbook?${query.toString()}`, {
           headers: { Accept: 'application/json' },
         });
         if (response.ok) {
