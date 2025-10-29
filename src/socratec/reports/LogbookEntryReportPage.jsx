@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   IconButton, Table, TableBody, TableCell, TableHead, TableRow,
-  Select, MenuItem, CircularProgress, TextField,
+  Select, MenuItem, CircularProgress, TextField, Typography, Box,
 } from '@mui/material';
 import GpsFixedIcon from '@mui/icons-material/GpsFixed';
 import LocationSearchingIcon from '@mui/icons-material/LocationSearching';
@@ -328,6 +328,27 @@ const LogbookEntryReportPage = () => {
               <ColumnSelect columns={columns} setColumns={setColumns} columnsArray={columnsArray} />
             </ReportFilter>
           </div>
+            <Box
+              sx={{
+                display: 'flex',
+                gap: 3,
+                padding: 2,
+                backgroundColor: 'background.paper',
+                borderBottom: '1px solid',
+                borderColor: 'divider',
+              }}
+            >
+              <Typography variant="body2" color="text.secondary">
+                <strong>{t('socratec_logbookEntriesCount')}:</strong> {items.length}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                <strong>{t('socratec_logbookTotalDistance')}:</strong> {formatDistance(
+                  items.reduce((sum, item) => sum + (item.distance || 0), 0),
+                  distanceUnit,
+                  t
+                )}
+              </Typography>
+            </Box>
           <Table>
             <TableHead>
               <TableRow>

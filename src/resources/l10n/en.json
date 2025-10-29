@@ -560,6 +560,8 @@
     "socratec_logbookTypeBusiness": "Business",
     "socratec_logbookTypePrivate": "Private",
     "socratec_logbookTypeNone": "None",
+    "socratec_logbookEntriesCount": "Entries",
+    "socratec_logbookTotalDistance": "Total Distance",
     "socratec_refresh": "Refresh",
     "reportDaily": "Daily Summary",
     "reportChart": "Chart",
