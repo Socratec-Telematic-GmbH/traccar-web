@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   IconButton, Table, TableBody, TableCell, TableHead, TableRow,
-  Select, MenuItem, CircularProgress,
+  Select, MenuItem, CircularProgress, TextField,
 } from '@mui/material';
 import GpsFixedIcon from '@mui/icons-material/GpsFixed';
 import LocationSearchingIcon from '@mui/icons-material/LocationSearching';
@@ -42,6 +42,7 @@ const columnsArray = [
   ['spentFuel', 'reportSpentFuel'],
   ['driverName', 'sharedDriver'],
   ['type', 'socratec_logbookEntryType'],
+  ['notes', 'socratec_logbookEntryNotes'],
 ];
 const columnsMap = new Map(columnsArray);
 
@@ -164,6 +165,60 @@ const LogbookEntryReportPage = () => {
           )
         );
       } else {
+        let errorMessage = 'Failed to update logbook entry type';
+        try {
+          const errorData = await response.json();
+          errorMessage = errorData.error || errorMessage;
+        } catch {
+          errorMessage = await response.text() || errorMessage;
+        }
+        
+        // Provide specific error messages based on status codes
+        if (response.status === 400) {
+          errorMessage = 'Invalid type value. Please try again.';
+        } else if (response.status === 404) {
+          errorMessage = 'Logbook entry not found.';
+        } else if (response.status === 403) {
+          errorMessage = 'Access denied. You do not have permission to modify this entry.';
+        }
+        
+        throw Error(errorMessage);
+      }
+    } finally {
+      setUpdatingItems(prev => {
+        const newSet = new Set(prev);
+        newSet.delete(itemId);
+        return newSet;
+      });
+    }
+  });
+
+  const handleNotesUpdate = useCatch(async (itemId, newNotes) => {
+    setUpdatingItems(prev => new Set(prev).add(itemId));
+    
+    try {
+      const currentItem = items.find(item => item.id === itemId);
+      const response = await fetch(`/api/logbook/${itemId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({ 
+          type: currentItem.type, 
+          notes: newNotes,
+          id: itemId 
+        }),
+      });
+      
+      if (response.ok) {
+        const updatedItem = await response.json();
+        setItems(prevItems => 
+          prevItems.map(item => 
+            item.id === itemId ? updatedItem : item
+          )
+        );
+      } else {
         throw Error(await response.text());
       }
     } finally {
@@ -226,6 +281,24 @@ const LogbookEntryReportPage = () => {
             <MenuItem value={2}>{t('socratec_logbookTypePrivate')}</MenuItem>
           </Select>
         );
+      case 'notes':
+        return (
+          <TextField
+            defaultValue={value || ''}
+            onBlur={(e) => {
+              // Only update if the value actually changed
+              if (e.target.value !== (value || '')) {
+                handleNotesUpdate(item.id, e.target.value);
+              }
+            }}
+            size="small"
+            disabled={updatingItems.has(item.id)}
+            placeholder={t('socratec_logbookEntryNotesPlaceholder') || 'Add notes...'}
+            sx={{ minWidth: 200 }}
+            multiline
+            maxRows={3}
+          />
+        );
       default:
         return value;
     }
@@ -278,7 +351,7 @@ const LogbookEntryReportPage = () => {
                   </TableCell>
                   {columns.map((key) => (
                     <TableCell key={key}>
-                      {key === 'type' && updatingItems.has(item.id) ? (
+                      {(key === 'type' || key === 'notes') && updatingItems.has(item.id) ? (
                         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                           {formatValue(item, key)}
                           <CircularProgress size={16} />
