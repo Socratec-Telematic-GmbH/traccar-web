@@ -617,5 +617,15 @@
     "categoryVan": "Van",
     "categoryScooter": "Scooter",
     "maintenanceStart": "Départ",
-    "maintenancePeriod": "Période"
+    "maintenancePeriod": "Période",
+    "socratec_reportLogbookEntries": "Entrées du carnet de bord",
+    "socratec_logbookEntryType": "Type",
+    "socratec_logbookEntryNotes": "Notes",
+    "socratec_logbookEntryNotesPlaceholder": "Ajouter des notes...",
+    "socratec_logbookTypeBusiness": "Professionnel",
+    "socratec_logbookTypePrivate": "Privé",
+    "socratec_logbookTypeNone": "Aucun",
+    "socratec_logbookEntriesCount": "Entrées",
+    "socratec_logbookTotalDistance": "Distance totale",
+    "socratec_refresh": "Actualiser"
 }
