@@ -631,5 +631,6 @@
     "socratec_logbookTotalDuration": "Gesamtdauer",
     "socratec_logbookPrivateDuration": "Private Dauer",
     "socratec_logbookBusinessDuration": "Geschäftliche Dauer",
+    "socratec_exportPdf": "PDF exportieren",
     "socratec_refresh": "Aktualisieren"
 }

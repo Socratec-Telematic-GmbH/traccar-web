@@ -12,7 +12,7 @@ import SelectField from '../../common/components/SelectField';
 import { useRestriction } from '../../common/util/permissions';
 
 const ReportFilter = ({
-  children, handleSubmit, handleSchedule, showOnly, ignoreDevice, multiDevice, includeGroups, loading,
+  children, handleSubmit, handleSchedule, showOnly, ignoreDevice, multiDevice, includeGroups, loading, customOptions,
 }) => {
   const { classes } = useReportStyles();
   const dispatch = useDispatch();
@@ -197,7 +197,7 @@ const ReportFilter = ({
             onClick={handleClick}
             selected={button}
             setSelected={(value) => setButton(value)}
-            options={readonly ? {
+            options={customOptions || (readonly ? {
               json: t('reportShow'),
               export: t('reportExport'),
               mail: t('reportEmail'),
@@ -206,7 +206,7 @@ const ReportFilter = ({
               export: t('reportExport'),
               mail: t('reportEmail'),
               schedule: t('reportSchedule'),
-            }}
+            })}
           />
         )}
       </div>

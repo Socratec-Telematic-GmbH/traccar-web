@@ -2,8 +2,9 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   IconButton, Table, TableBody, TableCell, TableHead, TableRow,
-  Select, MenuItem, CircularProgress, TextField, Typography, Box, Grid,
+  Select, MenuItem, CircularProgress, TextField, Typography, Box, Grid, Button,
 } from '@mui/material';
+import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 import GpsFixedIcon from '@mui/icons-material/GpsFixed';
 import LocationSearchingIcon from '@mui/icons-material/LocationSearching';
 import {
@@ -12,6 +13,8 @@ import {
 import ReportFilter from '../../reports/components/ReportFilter';
 import { useAttributePreference } from '../../common/util/preferences';
 import { useTranslation } from '../../common/components/LocalizationProvider';
+import { useSelector } from 'react-redux';
+import dayjs from 'dayjs';
 import PageLayout from '../../common/components/PageLayout';
 import ReportsMenu from '../../reports/components/ReportsMenu';
 import ColumnSelect from '../../reports/components/ColumnSelect';
@@ -60,6 +63,15 @@ const LogbookEntryReportPage = () => {
   const distanceUnit = useAttributePreference('distanceUnit');
   const speedUnit = useAttributePreference('speedUnit');
   const volumeUnit = useAttributePreference('volumeUnit');
+
+  // Redux selectors for report parameters
+  const devices = useSelector((state) => state.devices.items);
+  const deviceId = useSelector((state) => state.devices.selectedId);
+  const deviceIds = useSelector((state) => state.devices.selectedIds);
+  const groupIds = useSelector((state) => state.reports.groupIds);
+  const period = useSelector((state) => state.reports.period);
+  const from = useSelector((state) => state.reports.from);
+  const to = useSelector((state) => state.reports.to);
 
   const [optionalColumns, setOptionalColumns] = usePersistedState('logbookEntryOptionalColumns', ['averageSpeed']);
   
@@ -121,6 +133,8 @@ const LogbookEntryReportPage = () => {
 
     if (type === 'export') {
       window.location.assign(`/api/reports/logbook/xlsx?${query.toString()}`);
+    } else if (type === 'pdf') {
+      window.location.assign(`/api/reports/logbook/pdf?${query.toString()}`);
     } else if (type === 'mail') {
       const response = await fetch(`/api/reports/logbook/mail?${query.toString()}`);
       if (!response.ok) {
@@ -152,6 +166,7 @@ const LogbookEntryReportPage = () => {
       navigate('/reports/scheduled');
     }
   });
+
 
   const handleTypeUpdate = useCatch(async (itemId, newType) => {
     setUpdatingItems(prev => new Set(prev).add(itemId));
@@ -251,6 +266,7 @@ const LogbookEntryReportPage = () => {
     }
   };
 
+
   const formatValue = (item, key) => {
     const value = item[key];
     switch (key) {
@@ -332,7 +348,18 @@ const LogbookEntryReportPage = () => {
         )}
         <div className={classes.containerMain}>
           <div className={classes.header}>
-            <ReportFilter handleSubmit={handleSubmit} handleSchedule={handleSchedule} loading={loading}>
+            <ReportFilter 
+              handleSubmit={handleSubmit} 
+              handleSchedule={handleSchedule} 
+              loading={loading}
+              customOptions={{
+                json: t('reportShow'),
+                export: t('reportExport'),
+                pdf: t('socratec_exportPdf') || 'Export PDF',
+                mail: t('reportEmail'),
+                schedule: t('reportSchedule'),
+              }}
+            >
               <ColumnSelect columns={optionalColumns} setColumns={setOptionalColumns} columnsArray={optionalColumnsArray} />
             </ReportFilter>
           </div>
