@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   IconButton, Table, TableBody, TableCell, TableHead, TableRow,
-  Select, MenuItem, CircularProgress, TextField, Typography, Box,
+  Select, MenuItem, CircularProgress, TextField, Typography, Box, Grid,
 } from '@mui/material';
 import GpsFixedIcon from '@mui/icons-material/GpsFixed';
 import LocationSearchingIcon from '@mui/icons-material/LocationSearching';
@@ -245,9 +245,9 @@ const LogbookEntryReportPage = () => {
         return t('socratec_logbookTypeBusiness');
       case 2:
         return t('socratec_logbookTypePrivate');
-      case 0:
       default:
-        return t('socratec_logbookTypeNone');
+        console.warn(`Invalid logbook entry type: ${type}. Type "None" is no longer supported.`);
+        return '—'; // placeholder for invalid types
     }
   };
 
@@ -285,7 +285,6 @@ const LogbookEntryReportPage = () => {
             disabled={updatingItems.has(item.id)}
             sx={{ minWidth: 120 }}
           >
-            <MenuItem value={0}>{t('socratec_logbookTypeNone')}</MenuItem>
             <MenuItem value={1}>{t('socratec_logbookTypeBusiness')}</MenuItem>
             <MenuItem value={2}>{t('socratec_logbookTypePrivate')}</MenuItem>
           </Select>
@@ -339,24 +338,86 @@ const LogbookEntryReportPage = () => {
           </div>
             <Box
               sx={{
-                display: 'flex',
-                gap: 3,
                 padding: 2,
                 backgroundColor: 'background.paper',
                 borderBottom: '1px solid',
                 borderColor: 'divider',
               }}
             >
-              <Typography variant="body2" color="text.secondary">
-                <strong>{t('socratec_logbookEntriesCount')}:</strong> {items.length}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                <strong>{t('socratec_logbookTotalDistance')}:</strong> {formatDistance(
-                  items.reduce((sum, item) => sum + (item.distance || 0), 0),
-                  distanceUnit,
-                  t
-                )}
-              </Typography>
+              <Grid container spacing={3}>
+                <Grid item xs={12} md={4}>
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: 2,
+                    }}
+                  >
+                    <Typography variant="body2" color="text.secondary">
+                      <strong>{t('socratec_logbookEntriesCount')}:</strong> {items.length}
+                    </Typography>
+                  </Box>
+                </Grid>
+                <Grid item xs={12} md={4}>
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: 2,
+                    }}
+                  >
+                    <Typography variant="body2" color="text.secondary">
+                      <strong>{t('socratec_logbookTotalDistance')}:</strong> {formatDistance(
+                        items.reduce((sum, item) => sum + (item.distance || 0), 0),
+                        distanceUnit,
+                        t
+                      )}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      <strong>{t('socratec_logbookPrivateDistance')}:</strong> {formatDistance(
+                        items.filter(item => item.type === 2).reduce((sum, item) => sum + (item.distance || 0), 0),
+                        distanceUnit,
+                        t
+                      )}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      <strong>{t('socratec_logbookBusinessDistance')}:</strong> {formatDistance(
+                        items.filter(item => item.type === 1).reduce((sum, item) => sum + (item.distance || 0), 0),
+                        distanceUnit,
+                        t
+                      )}
+                    </Typography>
+                  </Box>
+                </Grid>
+                <Grid item xs={12} md={4}>
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: 2,
+                    }}
+                  >
+                    <Typography variant="body2" color="text.secondary">
+                      <strong>{t('socratec_logbookTotalDuration')}:</strong> {formatNumericHours(
+                        items.reduce((sum, item) => sum + (item.duration || 0), 0),
+                        t
+                      )}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      <strong>{t('socratec_logbookPrivateDuration')}:</strong> {formatNumericHours(
+                        items.filter(item => item.type === 2).reduce((sum, item) => sum + (item.duration || 0), 0),
+                        t
+                      )}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      <strong>{t('socratec_logbookBusinessDuration')}:</strong> {formatNumericHours(
+                        items.filter(item => item.type === 1).reduce((sum, item) => sum + (item.duration || 0), 0),
+                        t
+                      )}
+                    </Typography>
+                  </Box>
+                </Grid>
+              </Grid>
             </Box>
           <Table>
             <TableHead>
