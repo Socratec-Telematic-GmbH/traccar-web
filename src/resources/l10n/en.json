@@ -624,8 +624,12 @@
     "socratec_logbookEntryNotesPlaceholder": "Add notes...",
     "socratec_logbookTypeBusiness": "Business",
     "socratec_logbookTypePrivate": "Private",
-    "socratec_logbookTypeNone": "None",
     "socratec_logbookEntriesCount": "Entries",
     "socratec_logbookTotalDistance": "Total Distance",
+    "socratec_logbookPrivateDistance": "Private Distance",
+    "socratec_logbookBusinessDistance": "Business Distance",
+    "socratec_logbookTotalDuration": "Total Duration",
+    "socratec_logbookPrivateDuration": "Private Duration",
+    "socratec_logbookBusinessDuration": "Business Duration",
     "socratec_refresh": "Refresh"
 }

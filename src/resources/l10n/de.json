@@ -624,8 +624,12 @@
     "socratec_logbookEntryNotesPlaceholder": "Notizen hinzufügen...",
     "socratec_logbookTypeBusiness": "Geschäftlich",
     "socratec_logbookTypePrivate": "Privat",
-    "socratec_logbookTypeNone": "Keine",
     "socratec_logbookEntriesCount": "Einträge",
     "socratec_logbookTotalDistance": "Gesamtstrecke",
+    "socratec_logbookPrivateDistance": "Private Strecke",
+    "socratec_logbookBusinessDistance": "Geschäftliche Strecke",
+    "socratec_logbookTotalDuration": "Gesamtdauer",
+    "socratec_logbookPrivateDuration": "Private Dauer",
+    "socratec_logbookBusinessDuration": "Geschäftliche Dauer",
     "socratec_refresh": "Aktualisieren"
 }
