@@ -46,6 +46,12 @@ const columnsArray = [
 ];
 const columnsMap = new Map(columnsArray);
 
+// Define mandatory columns that cannot be hidden
+const mandatoryColumns = ['startTime', 'startAddress', 'endTime', 'endAddress', 'duration', 'distance', 'type', 'notes'];
+
+// Filter optional columns (those that can be toggled by user)
+const optionalColumnsArray = columnsArray.filter(([key]) => !mandatoryColumns.includes(key));
+
 const LogbookEntryReportPage = () => {
   const navigate = useNavigate();
   const { classes } = useReportStyles();
@@ -55,7 +61,10 @@ const LogbookEntryReportPage = () => {
   const speedUnit = useAttributePreference('speedUnit');
   const volumeUnit = useAttributePreference('volumeUnit');
 
-  const [columns, setColumns] = usePersistedState('logbookEntryColumns', ['startTime', 'endTime', 'distance', 'averageSpeed', 'type']);
+  const [optionalColumns, setOptionalColumns] = usePersistedState('logbookEntryOptionalColumns', ['averageSpeed']);
+  
+  // Always include mandatory columns plus user-selected optional columns
+  const columns = [...mandatoryColumns, ...optionalColumns.filter(col => !mandatoryColumns.includes(col))];
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
@@ -325,7 +334,7 @@ const LogbookEntryReportPage = () => {
         <div className={classes.containerMain}>
           <div className={classes.header}>
             <ReportFilter handleSubmit={handleSubmit} handleSchedule={handleSchedule} loading={loading}>
-              <ColumnSelect columns={columns} setColumns={setColumns} columnsArray={columnsArray} />
+              <ColumnSelect columns={optionalColumns} setColumns={setOptionalColumns} columnsArray={optionalColumnsArray} />
             </ReportFilter>
           </div>
             <Box
