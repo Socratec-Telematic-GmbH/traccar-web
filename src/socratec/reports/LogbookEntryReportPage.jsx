@@ -1,10 +1,9 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   IconButton, Table, TableBody, TableCell, TableHead, TableRow,
-  Select, MenuItem, CircularProgress, TextField, Typography, Box, Grid, Button,
+  Select, MenuItem, CircularProgress, TextField, Typography, Box, Grid,
 } from '@mui/material';
-import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 import GpsFixedIcon from '@mui/icons-material/GpsFixed';
 import LocationSearchingIcon from '@mui/icons-material/LocationSearching';
 import {
@@ -13,8 +12,6 @@ import {
 import ReportFilter from '../../reports/components/ReportFilter';
 import { useAttributePreference } from '../../common/util/preferences';
 import { useTranslation } from '../../common/components/LocalizationProvider';
-import { useSelector } from 'react-redux';
-import dayjs from 'dayjs';
 import PageLayout from '../../common/components/PageLayout';
 import ReportsMenu from '../../reports/components/ReportsMenu';
 import ColumnSelect from '../../reports/components/ColumnSelect';
@@ -64,24 +61,34 @@ const LogbookEntryReportPage = () => {
   const speedUnit = useAttributePreference('speedUnit');
   const volumeUnit = useAttributePreference('volumeUnit');
 
-  // Redux selectors for report parameters
-  const devices = useSelector((state) => state.devices.items);
-  const deviceId = useSelector((state) => state.devices.selectedId);
-  const deviceIds = useSelector((state) => state.devices.selectedIds);
-  const groupIds = useSelector((state) => state.reports.groupIds);
-  const period = useSelector((state) => state.reports.period);
-  const from = useSelector((state) => state.reports.from);
-  const to = useSelector((state) => state.reports.to);
-
   const [optionalColumns, setOptionalColumns] = usePersistedState('logbookEntryOptionalColumns', ['averageSpeed']);
   
   // Always include mandatory columns plus user-selected optional columns
-  const columns = [...mandatoryColumns, ...optionalColumns.filter(col => !mandatoryColumns.includes(col))];
+  const columns = [...mandatoryColumns, ...optionalColumns];
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
   const [route, setRoute] = useState(null);
   const [updatingItems, setUpdatingItems] = useState(new Set());
+
+  // Memoize statistics calculations to avoid recalculation on every render
+  const statistics = useMemo(() => {
+    const totalDistance = items.reduce((sum, item) => sum + (item.distance || 0), 0);
+    const totalDuration = items.reduce((sum, item) => sum + (item.duration || 0), 0);
+    const privateDistance = items.filter(item => item.type === 2).reduce((sum, item) => sum + (item.distance || 0), 0);
+    const privateDuration = items.filter(item => item.type === 2).reduce((sum, item) => sum + (item.duration || 0), 0);
+    const businessDistance = items.filter(item => item.type === 1).reduce((sum, item) => sum + (item.distance || 0), 0);
+    const businessDuration = items.filter(item => item.type === 1).reduce((sum, item) => sum + (item.duration || 0), 0);
+    
+    return {
+      totalDistance,
+      totalDuration,
+      privateDistance,
+      privateDuration,
+      businessDistance,
+      businessDuration,
+    };
+  }, [items]);
 
   const createMarkers = () => ([
     {
@@ -243,7 +250,24 @@ const LogbookEntryReportPage = () => {
           )
         );
       } else {
-        throw Error(await response.text());
+        let errorMessage = 'Failed to update logbook entry notes';
+        try {
+          const errorData = await response.json();
+          errorMessage = errorData.error || errorMessage;
+        } catch {
+          errorMessage = await response.text() || errorMessage;
+        }
+        
+        // Provide specific error messages based on status codes
+        if (response.status === 400) {
+          errorMessage = 'Invalid notes value. Please try again.';
+        } else if (response.status === 404) {
+          errorMessage = 'Logbook entry not found.';
+        } else if (response.status === 403) {
+          errorMessage = 'Access denied. You do not have permission to modify this entry.';
+        }
+        
+        throw Error(errorMessage);
       }
     } finally {
       setUpdatingItems(prev => {
@@ -253,19 +277,6 @@ const LogbookEntryReportPage = () => {
       });
     }
   });
-
-  const formatLogbookEntryType = (type) => {
-    switch (type) {
-      case 1:
-        return t('socratec_logbookTypeBusiness');
-      case 2:
-        return t('socratec_logbookTypePrivate');
-      default:
-        console.warn(`Invalid logbook entry type: ${type}. Type "None" is no longer supported.`);
-        return '—'; // placeholder for invalid types
-    }
-  };
-
 
   const formatValue = (item, key) => {
     const value = item[key];
@@ -355,7 +366,7 @@ const LogbookEntryReportPage = () => {
               customOptions={{
                 json: t('reportShow'),
                 export: t('reportExport'),
-                pdf: t('socratec_exportPdf') || 'Export PDF',
+                pdf: t('socratec_exportPdf'),
                 mail: t('reportEmail'),
                 schedule: t('reportSchedule'),
               }}
@@ -395,21 +406,21 @@ const LogbookEntryReportPage = () => {
                   >
                     <Typography variant="body2" color="text.secondary">
                       <strong>{t('socratec_logbookTotalDistance')}:</strong> {formatDistance(
-                        items.reduce((sum, item) => sum + (item.distance || 0), 0),
+                        statistics.totalDistance,
                         distanceUnit,
                         t
                       )}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
                       <strong>{t('socratec_logbookPrivateDistance')}:</strong> {formatDistance(
-                        items.filter(item => item.type === 2).reduce((sum, item) => sum + (item.distance || 0), 0),
+                        statistics.privateDistance,
                         distanceUnit,
                         t
                       )}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
                       <strong>{t('socratec_logbookBusinessDistance')}:</strong> {formatDistance(
-                        items.filter(item => item.type === 1).reduce((sum, item) => sum + (item.distance || 0), 0),
+                        statistics.businessDistance,
                         distanceUnit,
                         t
                       )}
@@ -426,19 +437,19 @@ const LogbookEntryReportPage = () => {
                   >
                     <Typography variant="body2" color="text.secondary">
                       <strong>{t('socratec_logbookTotalDuration')}:</strong> {formatNumericHours(
-                        items.reduce((sum, item) => sum + (item.duration || 0), 0),
+                        statistics.totalDuration,
                         t
                       )}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
                       <strong>{t('socratec_logbookPrivateDuration')}:</strong> {formatNumericHours(
-                        items.filter(item => item.type === 2).reduce((sum, item) => sum + (item.duration || 0), 0),
+                        statistics.privateDuration,
                         t
                       )}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
                       <strong>{t('socratec_logbookBusinessDuration')}:</strong> {formatNumericHours(
-                        items.filter(item => item.type === 1).reduce((sum, item) => sum + (item.duration || 0), 0),
+                        statistics.businessDuration,
                         t
                       )}
                     </Typography>
