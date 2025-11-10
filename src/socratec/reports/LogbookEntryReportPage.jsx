@@ -47,7 +47,7 @@ const columnsArray = [
 const columnsMap = new Map(columnsArray);
 
 // Define mandatory columns that cannot be hidden
-const mandatoryColumns = ['startTime', 'startAddress', 'endTime', 'endAddress', 'duration', 'distance', 'type', 'notes'];
+const mandatoryColumns = ['startTime', 'startAddress', 'startOdometer', 'endTime', 'endAddress', 'endOdometer', 'duration', 'distance', 'type', 'notes'];
 
 // Filter optional columns (those that can be toggled by user)
 const optionalColumnsArray = columnsArray.filter(([key]) => !mandatoryColumns.includes(key));
