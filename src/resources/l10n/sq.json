@@ -73,6 +73,7 @@
     "sharedTestExpression": "Test Expression",
     "sharedCalendar": "Calendar",
     "sharedCalendars": "Calendars",
+    "sharedRouteColoring": "Ngjyrosja e rrugës",
     "sharedFile": "File",
     "sharedSearchDevices": "Search Devices",
     "sharedSortBy": "Sort By",
@@ -127,6 +128,8 @@
     "attributePolylineDistance": "Polyline Distance",
     "attributeReportIgnoreOdometer": "Report: Ignore Odometer",
     "attributeWebReportColor": "Web: Report Color",
+    "attributeWebColorByDigitalInput": "Ngjyros rrugët sipas hyrjes dixhitale",
+    "attributeWebColorByDigitalInputName": "Hyrja dixhitale për ngjyrosjen e rrugës",
     "attributeDevicePassword": "Device Password",
     "attributeDeviceImage": "Device Image",
     "attributeDeviceInactivityStart": "Device Inactivity Start",
@@ -617,5 +620,6 @@
     "categoryVan": "Van",
     "categoryScooter": "Scooter",
     "maintenanceStart": "Start",
-    "maintenancePeriod": "Period"
+    "maintenancePeriod": "Period",
+    "legendDigitalInputActive": "Aktiv"
 }

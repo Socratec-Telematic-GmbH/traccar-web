@@ -73,6 +73,7 @@
     "sharedTestExpression": "පරීක්ෂණ ප්රකාශනය",
     "sharedCalendar": "දින දසුන",
     "sharedCalendars": "දින දසුන්",
+    "sharedRouteColoring": "මාර්ග වර්ණ ගැන්වීම",
     "sharedFile": "ගොනුව",
     "sharedSearchDevices": "සෙවුම් උපාංග",
     "sharedSortBy": "අනුව තෝරන්න",
@@ -127,6 +128,8 @@
     "attributePolylineDistance": "බහු රේඛා දුර",
     "attributeReportIgnoreOdometer": "වාර්තාව: සැතපුම්මානය නොසලකන්න",
     "attributeWebReportColor": "වියමන: පාට වාර්තා කරන්න",
+    "attributeWebColorByDigitalInput": "ඩිජිටල් ආදානය මගින් මාර්ග වර්ණ කරන්න",
+    "attributeWebColorByDigitalInputName": "මාර්ග වර්ණ ගැන්වීම සඳහා ඩිජිටල් ආදානය",
     "attributeDevicePassword": "කැමති මුරපදය",
     "attributeDeviceImage": "උපාංග රූපය",
     "attributeDeviceInactivityStart": "උපාංගය අක්රිය වීම ආරම්භය",
@@ -617,5 +620,6 @@
     "categoryVan": "වෑන්",
     "categoryScooter": "ස්කූටරය",
     "maintenanceStart": "ආරම්භය",
-    "maintenancePeriod": "කාලය"
+    "maintenancePeriod": "කාලය",
+    "legendDigitalInputActive": "ක්‍රියාකාරී"
 }

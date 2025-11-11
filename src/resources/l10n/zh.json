@@ -73,6 +73,7 @@
     "sharedTestExpression": "测试表达式",
     "sharedCalendar": "日历",
     "sharedCalendars": "日历",
+    "sharedRouteColoring": "路线着色",
     "sharedFile": "文件",
     "sharedSearchDevices": "搜索设备",
     "sharedSortBy": "排序方式",
@@ -127,6 +128,8 @@
     "attributePolylineDistance": "折线里程",
     "attributeReportIgnoreOdometer": "报告：忽略里程表",
     "attributeWebReportColor": "网页：报告颜色",
+    "attributeWebColorByDigitalInput": "按数字输入为路线着色",
+    "attributeWebColorByDigitalInputName": "路线着色的数字输入",
     "attributeDevicePassword": "设备密码",
     "attributeDeviceImage": "设备图片",
     "attributeDeviceInactivityStart": "设备无响应起始",
@@ -617,5 +620,6 @@
     "categoryVan": "厢式货车",
     "categoryScooter": "小型摩托车",
     "maintenanceStart": "开启",
-    "maintenancePeriod": "时段"
+    "maintenancePeriod": "时段",
+    "legendDigitalInputActive": "活动"
 }

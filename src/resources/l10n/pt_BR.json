@@ -73,6 +73,7 @@
     "sharedTestExpression": "Expressão de teste",
     "sharedCalendar": "Calendário",
     "sharedCalendars": "Calendários",
+    "sharedRouteColoring": "Coloração de rota",
     "sharedFile": "Arquivo",
     "sharedSearchDevices": "Pesquisar Dispositivos",
     "sharedSortBy": "Organizar por",
@@ -127,6 +128,8 @@
     "attributePolylineDistance": "Distância da Polilinha",
     "attributeReportIgnoreOdometer": "Relatório: Ignorar Odômetro",
     "attributeWebReportColor": "Web: Cor do Relatório",
+    "attributeWebColorByDigitalInput": "Colorir rotas por entrada digital",
+    "attributeWebColorByDigitalInputName": "Entrada digital para coloração de rota",
     "attributeDevicePassword": "Senha do Dispositivo",
     "attributeDeviceImage": "Imagem",
     "attributeDeviceInactivityStart": "Início de inatividade do dispositivo",
@@ -617,5 +620,6 @@
     "categoryVan": "Van",
     "categoryScooter": "Patinete Elétrico",
     "maintenanceStart": "Começar",
-    "maintenancePeriod": "Período"
+    "maintenancePeriod": "Período",
+    "legendDigitalInputActive": "Ativo"
 }

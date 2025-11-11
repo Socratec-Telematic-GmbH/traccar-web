@@ -73,6 +73,7 @@
     "sharedTestExpression": "Test İfadesi",
     "sharedCalendar": "Takvim",
     "sharedCalendars": "Takvimler",
+    "sharedRouteColoring": "Rota renklendirme",
     "sharedFile": "Dosya",
     "sharedSearchDevices": "Cihaz Arama",
     "sharedSortBy": "Göre sırala",
@@ -127,6 +128,8 @@
     "attributePolylineDistance": "Çizgi uzaklığı",
     "attributeReportIgnoreOdometer": "Rapor: Odometerı yoksay",
     "attributeWebReportColor": "Web: Rapor Rengi",
+    "attributeWebColorByDigitalInput": "Dijital girişe göre rotaları renklendir",
+    "attributeWebColorByDigitalInputName": "Rota renklendirme için dijital giriş",
     "attributeDevicePassword": "Araç şifresi",
     "attributeDeviceImage": "Cihaz Resmi",
     "attributeDeviceInactivityStart": "Device Inactivity Start",
@@ -617,5 +620,6 @@
     "categoryVan": "Van",
     "categoryScooter": "Mobilet",
     "maintenanceStart": "Başlat",
-    "maintenancePeriod": "Dönem"
+    "maintenancePeriod": "Dönem",
+    "legendDigitalInputActive": "Aktif"
 }

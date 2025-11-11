@@ -73,6 +73,7 @@
     "sharedTestExpression": "Test Expression",
     "sharedCalendar": "Kalender",
     "sharedCalendars": "Kalenders",
+    "sharedRouteColoring": "Roete Kleuring",
     "sharedFile": "Lêer",
     "sharedSearchDevices": "Soek Toestelle",
     "sharedSortBy": "Sorteer Volgens",
@@ -127,6 +128,8 @@
     "attributePolylineDistance": "Polielynafstand",
     "attributeReportIgnoreOdometer": "Verslag: Ignoreer Odometer",
     "attributeWebReportColor": "Web: Rapporteer kleur",
+    "attributeWebColorByDigitalInput": "Kleur Roetes deur Digitale Inset",
+    "attributeWebColorByDigitalInputName": "Digitale Inset vir Roete Kleuring",
     "attributeDevicePassword": "Toestelwagwoord",
     "attributeDeviceImage": "Device Image",
     "attributeDeviceInactivityStart": "Device Inactivity Start",
@@ -617,5 +620,6 @@
     "categoryVan": "Paneelwa",
     "categoryScooter": "Moffiebike",
     "maintenanceStart": "Aan",
-    "maintenancePeriod": "Periode"
+    "maintenancePeriod": "Periode",
+    "legendDigitalInputActive": "Aktief"
 }

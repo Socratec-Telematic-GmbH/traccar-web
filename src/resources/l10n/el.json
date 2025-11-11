@@ -73,6 +73,7 @@
     "sharedTestExpression": "Δοκιμή Διατύπωσης",
     "sharedCalendar": "Ημερολόγιο",
     "sharedCalendars": "Ημερολόγια",
+    "sharedRouteColoring": "Χρωματισμός διαδρομής",
     "sharedFile": "Αρχείο",
     "sharedSearchDevices": "Αναζήτηση Συσκευών",
     "sharedSortBy": "Ταξινόμηση κατά",
@@ -127,6 +128,8 @@
     "attributePolylineDistance": "Πολυγραμμική Απόσταση",
     "attributeReportIgnoreOdometer": "Αναφορά: Αγνόηση οδομέτρου",
     "attributeWebReportColor": "Ιστός: Χρώμα Αναφοράς",
+    "attributeWebColorByDigitalInput": "Χρωματισμός διαδρομών με ψηφιακή είσοδο",
+    "attributeWebColorByDigitalInputName": "Ψηφιακή είσοδος για χρωματισμό διαδρομής",
     "attributeDevicePassword": "Κωδικός Συσκευής",
     "attributeDeviceImage": "Εικόνα Συσκευής",
     "attributeDeviceInactivityStart": "Αρχή Αδράνειας Συσκευής",
@@ -617,5 +620,6 @@
     "categoryVan": "Κλειστό Φορτηγό",
     "categoryScooter": "Σκούτερ",
     "maintenanceStart": "Εκκίνηση",
-    "maintenancePeriod": "Περίοδος"
+    "maintenancePeriod": "Περίοδος",
+    "legendDigitalInputActive": "Ενεργό"
 }

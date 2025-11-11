@@ -73,6 +73,7 @@
     "sharedTestExpression": "Test Expression",
     "sharedCalendar": "Kalendārs",
     "sharedCalendars": "Kalendāri",
+    "sharedRouteColoring": "Maršruta krāsošana",
     "sharedFile": "Fails",
     "sharedSearchDevices": "Meklēt ierīces",
     "sharedSortBy": "Kārtot pēc",
@@ -127,6 +128,8 @@
     "attributePolylineDistance": "Maršruta Distance",
     "attributeReportIgnoreOdometer": "Ziņojums: Ignorēt Odometru",
     "attributeWebReportColor": "Web: Atskaites krāsa",
+    "attributeWebColorByDigitalInput": "Krāsot maršrutus pēc digitālās ievades",
+    "attributeWebColorByDigitalInputName": "Digitālā ievade maršruta krāsošanai",
     "attributeDevicePassword": "Ierīces parole",
     "attributeDeviceImage": "Ierīces attēls",
     "attributeDeviceInactivityStart": "Ierīces Neaktivitātes Sākšana",
@@ -617,5 +620,6 @@
     "categoryVan": "Busiņš",
     "categoryScooter": "Skrejritenis",
     "maintenanceStart": "Sākt",
-    "maintenancePeriod": "Periods"
+    "maintenancePeriod": "Periods",
+    "legendDigitalInputActive": "Aktīvs"
 }

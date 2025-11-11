@@ -73,6 +73,7 @@
     "sharedTestExpression": "Test Expression",
     "sharedCalendar": "Təqvim",
     "sharedCalendars": "Təqvimlər",
+    "sharedRouteColoring": "Marşrut Rənglənməsi",
     "sharedFile": "Fayl",
     "sharedSearchDevices": "Search Devices",
     "sharedSortBy": "Sort By",
@@ -127,6 +128,8 @@
     "attributePolylineDistance": "Polyline məsafə",
     "attributeReportIgnoreOdometer": "Hesabat: Odometri rədd etməki",
     "attributeWebReportColor": "Veb: Hesabat rəngi",
+    "attributeWebColorByDigitalInput": "Rəqəmsal Girişə görə Marşrutları Rəngləmək",
+    "attributeWebColorByDigitalInputName": "Marşrut Rənglənməsi üçün Rəqəmsal Giriş",
     "attributeDevicePassword": "Cihazın şifrəsi",
     "attributeDeviceImage": "Device Image",
     "attributeDeviceInactivityStart": "Device Inactivity Start",
@@ -617,5 +620,6 @@
     "categoryVan": "Furqon",
     "categoryScooter": "Scooter",
     "maintenanceStart": "Başlamaq",
-    "maintenancePeriod": "Dövr"
+    "maintenancePeriod": "Dövr",
+    "legendDigitalInputActive": "Aktiv"
 }

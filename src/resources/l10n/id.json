@@ -73,6 +73,7 @@
     "sharedTestExpression": "Test Expression",
     "sharedCalendar": "Kalender",
     "sharedCalendars": "Semua Kalender",
+    "sharedRouteColoring": "Pewarnaan Rute",
     "sharedFile": "Berkas",
     "sharedSearchDevices": "Search Devices",
     "sharedSortBy": "Sort By",
@@ -127,6 +128,8 @@
     "attributePolylineDistance": "Polyline Distance",
     "attributeReportIgnoreOdometer": "Laporan: Biarkan Odometer",
     "attributeWebReportColor": "Web: Warna Laporan",
+    "attributeWebColorByDigitalInput": "Warnai Rute berdasarkan Input Digital",
+    "attributeWebColorByDigitalInputName": "Input Digital untuk Pewarnaan Rute",
     "attributeDevicePassword": "Sandi Perangkat",
     "attributeDeviceImage": "Device Image",
     "attributeDeviceInactivityStart": "Device Inactivity Start",
@@ -617,5 +620,6 @@
     "categoryVan": "Van",
     "categoryScooter": "Scooter",
     "maintenanceStart": "Start",
-    "maintenancePeriod": "Period"
+    "maintenancePeriod": "Period",
+    "legendDigitalInputActive": "Aktif"
 }

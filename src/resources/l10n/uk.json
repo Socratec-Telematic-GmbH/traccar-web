@@ -73,6 +73,7 @@
     "sharedTestExpression": "Test Expression",
     "sharedCalendar": "Календар",
     "sharedCalendars": "Календарi",
+    "sharedRouteColoring": "Забарвлення маршруту",
     "sharedFile": "Файл",
     "sharedSearchDevices": "Search Devices",
     "sharedSortBy": "Sort By",
@@ -127,6 +128,8 @@
     "attributePolylineDistance": "Відстань від лінії",
     "attributeReportIgnoreOdometer": "Звіт: Ігнорувати одометер",
     "attributeWebReportColor": "Веб: Колір звіту",
+    "attributeWebColorByDigitalInput": "Забарвити маршрути за цифровим входом",
+    "attributeWebColorByDigitalInputName": "Цифровий вхід для забарвлення маршруту",
     "attributeDevicePassword": "Пароль пристрою",
     "attributeDeviceImage": "Device Image",
     "attributeDeviceInactivityStart": "Device Inactivity Start",
@@ -617,5 +620,6 @@
     "categoryVan": "Фургон",
     "categoryScooter": "Скутер",
     "maintenanceStart": "Початок",
-    "maintenancePeriod": "Період"
+    "maintenancePeriod": "Період",
+    "legendDigitalInputActive": "Активний"
 }

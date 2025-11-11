@@ -6,6 +6,14 @@ export default (t) => useMemo(() => ({
     type: 'string',
     subtype: 'color',
   },
+  'web.colorByDigitalInput': {
+    name: t('attributeWebColorByDigitalInput'),
+    type: 'boolean',
+  },
+  'web.colorByDigitalInputName': {
+    name: t('attributeWebColorByDigitalInputName'),
+    type: 'string',
+  },
   devicePassword: {
     name: t('attributeDevicePassword'),
     type: 'string',

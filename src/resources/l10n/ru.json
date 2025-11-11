@@ -73,6 +73,7 @@
     "sharedTestExpression": "Тестовое выражение",
     "sharedCalendar": "Календарь",
     "sharedCalendars": "Календари",
+    "sharedRouteColoring": "Раскраска маршрута",
     "sharedFile": "Файл",
     "sharedSearchDevices": "Поиск устройств",
     "sharedSortBy": "Сортировать по",
@@ -127,6 +128,8 @@
     "attributePolylineDistance": "Расстояние от линии",
     "attributeReportIgnoreOdometer": "Отчет: Игнорировать одометер",
     "attributeWebReportColor": "Веб: Цвет отчета",
+    "attributeWebColorByDigitalInput": "Раскрасить маршруты по цифровому входу",
+    "attributeWebColorByDigitalInputName": "Цифровой вход для раскраски маршрута",
     "attributeDevicePassword": "Пароль устройства",
     "attributeDeviceImage": "Картинка устройства",
     "attributeDeviceInactivityStart": "Начало бездействия устройства",
@@ -617,5 +620,6 @@
     "categoryVan": "Фургон",
     "categoryScooter": "Скутер",
     "maintenanceStart": "Начало",
-    "maintenancePeriod": "Период"
+    "maintenancePeriod": "Период",
+    "legendDigitalInputActive": "Активен"
 }

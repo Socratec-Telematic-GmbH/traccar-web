@@ -73,6 +73,7 @@
     "sharedTestExpression": "Test Expression",
     "sharedCalendar": "Тақвим",
     "sharedCalendars": "Тақвимлар",
+    "sharedRouteColoring": "Marshrutni ranglash",
     "sharedFile": "Файл",
     "sharedSearchDevices": "Search Devices",
     "sharedSortBy": "Sort By",
@@ -127,6 +128,8 @@
     "attributePolylineDistance": "Polyline Distance",
     "attributeReportIgnoreOdometer": "Report: Ignore Odometer",
     "attributeWebReportColor": "Web: Report Color",
+    "attributeWebColorByDigitalInput": "Raqamli kirishga ko'ra marshrutlarni ranglash",
+    "attributeWebColorByDigitalInputName": "Marshrutni ranglash uchun raqamli kirish",
     "attributeDevicePassword": "Device Password",
     "attributeDeviceImage": "Device Image",
     "attributeDeviceInactivityStart": "Device Inactivity Start",
@@ -617,5 +620,6 @@
     "categoryVan": "Van",
     "categoryScooter": "Scooter",
     "maintenanceStart": "Start",
-    "maintenancePeriod": "Period"
+    "maintenancePeriod": "Period",
+    "legendDigitalInputActive": "Faol"
 }

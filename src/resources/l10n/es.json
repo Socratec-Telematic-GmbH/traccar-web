@@ -73,6 +73,7 @@
     "sharedTestExpression": "Expresión Test",
     "sharedCalendar": "Calendario",
     "sharedCalendars": "Calendarios",
+    "sharedRouteColoring": "Coloreado de ruta",
     "sharedFile": "Archivo",
     "sharedSearchDevices": "Buscar Dispositivos",
     "sharedSortBy": "Ordenar por",
@@ -127,6 +128,8 @@
     "attributePolylineDistance": "Distancia de polilínea",
     "attributeReportIgnoreOdometer": "Informe: Ignorar el odómetro",
     "attributeWebReportColor": "Web: Color de informe",
+    "attributeWebColorByDigitalInput": "Colorear rutas por entrada digital",
+    "attributeWebColorByDigitalInputName": "Entrada digital para coloreado de ruta",
     "attributeDevicePassword": "Contraseña de dispositivo",
     "attributeDeviceImage": "Imagen del dispositivo",
     "attributeDeviceInactivityStart": "Inicio de inactividad del dispositivo",
@@ -617,5 +620,6 @@
     "categoryVan": "Furgoneta",
     "categoryScooter": "Moto",
     "maintenanceStart": "Iniciar",
-    "maintenancePeriod": "Período"
+    "maintenancePeriod": "Período",
+    "legendDigitalInputActive": "Activo"
 }

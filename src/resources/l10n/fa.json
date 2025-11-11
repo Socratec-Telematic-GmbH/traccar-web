@@ -73,6 +73,7 @@
     "sharedTestExpression": "تست اصطلاح",
     "sharedCalendar": "تقویم",
     "sharedCalendars": "تقویمها",
+    "sharedRouteColoring": "رنگ‌آمیزی مسیر",
     "sharedFile": "فایل",
     "sharedSearchDevices": "جستجوی دستگاهها",
     "sharedSortBy": "مرتب سازی",
@@ -127,6 +128,8 @@
     "attributePolylineDistance": "مسافت چند مسیری",
     "attributeReportIgnoreOdometer": "گزارش : بدون کیلومتر شمار",
     "attributeWebReportColor": "وب : گزارش رنگ",
+    "attributeWebColorByDigitalInput": "رنگ‌آمیزی مسیرها با ورودی دیجیتال",
+    "attributeWebColorByDigitalInputName": "ورودی دیجیتال برای رنگ‌آمیزی مسیر",
     "attributeDevicePassword": "رمز عبور ردیاب",
     "attributeDeviceImage": "عکس دستگاه",
     "attributeDeviceInactivityStart": "آغاز عدم فعالیت دستگاه",
@@ -617,5 +620,6 @@
     "categoryVan": "ون",
     "categoryScooter": "اسکوتر",
     "maintenanceStart": "شروع",
-    "maintenancePeriod": "بازه"
+    "maintenancePeriod": "بازه",
+    "legendDigitalInputActive": "فعال"
 }

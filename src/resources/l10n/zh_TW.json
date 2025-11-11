@@ -73,6 +73,7 @@
     "sharedTestExpression": "測試表示式",
     "sharedCalendar": "日曆",
     "sharedCalendars": "日曆",
+    "sharedRouteColoring": "路線著色",
     "sharedFile": "檔案",
     "sharedSearchDevices": "搜尋設備",
     "sharedSortBy": "排序方式",
@@ -127,6 +128,8 @@
     "attributePolylineDistance": "折線距離",
     "attributeReportIgnoreOdometer": "報告：忽略里程表",
     "attributeWebReportColor": "網頁：報告顏色",
+    "attributeWebColorByDigitalInput": "按數位輸入為路線著色",
+    "attributeWebColorByDigitalInputName": "路線著色的數位輸入",
     "attributeDevicePassword": "設備密碼",
     "attributeDeviceImage": "設備圖片",
     "attributeDeviceInactivityStart": "設備無回應起始",
@@ -617,5 +620,6 @@
     "categoryVan": "箱型車",
     "categoryScooter": "小型摩拖車",
     "maintenanceStart": "起始值",
-    "maintenancePeriod": "期間"
+    "maintenancePeriod": "期間",
+    "legendDigitalInputActive": "活動"
 }
