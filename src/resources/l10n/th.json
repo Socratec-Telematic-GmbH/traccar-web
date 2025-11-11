@@ -73,6 +73,7 @@
     "sharedTestExpression": "ทดสอบนิพจน์",
     "sharedCalendar": "ปฏิทิน",
     "sharedCalendars": "ปฏิทิน",
+    "sharedRouteColoring": "การระบายสีเส้นทาง",
     "sharedFile": "ไฟล์",
     "sharedSearchDevices": "ค้นหาอุปกรณ์",
     "sharedSortBy": "เรียงตาม",
@@ -127,6 +128,8 @@
     "attributePolylineDistance": "เส้นระยะทาง",
     "attributeReportIgnoreOdometer": "รายงาน: ละเว้นวัดระยะ",
     "attributeWebReportColor": "เว็บ: สีรายงาน",
+    "attributeWebColorByDigitalInput": "ระบายสีเส้นทางตามอินพุตดิจิทัล",
+    "attributeWebColorByDigitalInputName": "อินพุตดิจิทัลสำหรับการระบายสีเส้นทาง",
     "attributeDevicePassword": "รหัสผ่านอุปกรณ์",
     "attributeDeviceImage": "ภาพอุปกรณ์",
     "attributeDeviceInactivityStart": "อุปกรณ์ยังไม่เริ่มทำงาน",
@@ -617,5 +620,6 @@
     "categoryVan": "รถตู้",
     "categoryScooter": "สกู๊ตเตอร์",
     "maintenanceStart": "เริ่มต้น",
-    "maintenancePeriod": "ระยะเวลา"
+    "maintenancePeriod": "ระยะเวลา",
+    "legendDigitalInputActive": "ใช้งานอยู่"
 }

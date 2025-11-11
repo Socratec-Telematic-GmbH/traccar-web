@@ -73,6 +73,7 @@
     "sharedTestExpression": "Testovací výraz",
     "sharedCalendar": "Kalendář",
     "sharedCalendars": "Kalendáře",
+    "sharedRouteColoring": "Zbarvení trasy",
     "sharedFile": "Soubor",
     "sharedSearchDevices": "Vyhledat zařízení",
     "sharedSortBy": "Seřazeno podle",
@@ -127,6 +128,8 @@
     "attributePolylineDistance": "Vzdálenost křivky",
     "attributeReportIgnoreOdometer": "Report: Počítadlo kilometrů",
     "attributeWebReportColor": "Web: Barva reportu",
+    "attributeWebColorByDigitalInput": "Obarvit trasy podle digitálního vstupu",
+    "attributeWebColorByDigitalInputName": "Digitální vstup pro obarvení trasy",
     "attributeDevicePassword": "Heslo zařízení",
     "attributeDeviceImage": "Obrázek zařízení",
     "attributeDeviceInactivityStart": "Počátek nečinnosti zařízení",
@@ -617,5 +620,6 @@
     "categoryVan": "Dodávka",
     "categoryScooter": "Koloběžka",
     "maintenanceStart": "Start",
-    "maintenancePeriod": "Perioda"
+    "maintenancePeriod": "Perioda",
+    "legendDigitalInputActive": "Aktivní"
 }

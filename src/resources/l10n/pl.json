@@ -73,6 +73,7 @@
     "sharedTestExpression": "Wyrażenie testowe",
     "sharedCalendar": "Kalendarz",
     "sharedCalendars": "Kalendarze",
+    "sharedRouteColoring": "Kolorowanie trasy",
     "sharedFile": "Plik",
     "sharedSearchDevices": "Szukaj urządzeń",
     "sharedSortBy": "Sortuj według",
@@ -127,6 +128,8 @@
     "attributePolylineDistance": "Dystans łamanej",
     "attributeReportIgnoreOdometer": "Raport: Ignoruj licznik kilometrów",
     "attributeWebReportColor": "Web: Kolor raportu",
+    "attributeWebColorByDigitalInput": "Koloruj trasy według wejścia cyfrowego",
+    "attributeWebColorByDigitalInputName": "Wejście cyfrowe do kolorowania trasy",
     "attributeDevicePassword": "Hasło urządzenia",
     "attributeDeviceImage": "Zdjęcie urządzenia",
     "attributeDeviceInactivityStart": "Początek nieaktywności urządzenia",
@@ -617,5 +620,6 @@
     "categoryVan": "Van",
     "categoryScooter": "Skuter",
     "maintenanceStart": "Start",
-    "maintenancePeriod": "Okres"
+    "maintenancePeriod": "Okres",
+    "legendDigitalInputActive": "Aktywny"
 }

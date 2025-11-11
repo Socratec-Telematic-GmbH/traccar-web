@@ -73,6 +73,7 @@
     "sharedTestExpression": "Bandyti reikšmę",
     "sharedCalendar": "Kalendorius",
     "sharedCalendars": "Kalendoriai",
+    "sharedRouteColoring": "Maršruto spalvinimas",
     "sharedFile": "Failas",
     "sharedSearchDevices": "Ieškoti įrenginių",
     "sharedSortBy": "Rūšiuoti pagal",
@@ -127,6 +128,8 @@
     "attributePolylineDistance": "Linijos atstumas",
     "attributeReportIgnoreOdometer": "Ataskaita: Ignoruoti odometrą",
     "attributeWebReportColor": "Web: Ataskaitos spalva",
+    "attributeWebColorByDigitalInput": "Spalvinti maršrutus pagal skaitmeninę įvestį",
+    "attributeWebColorByDigitalInputName": "Skaitmeninė įvestis maršruto spalvinimui",
     "attributeDevicePassword": "Įrenginio slaptažodis",
     "attributeDeviceImage": "Įrenginio vaizdas",
     "attributeDeviceInactivityStart": "Įrenginio neaktyvumo pradžia",
@@ -617,5 +620,6 @@
     "categoryVan": "Autobusiuskas",
     "categoryScooter": "Mopedas",
     "maintenanceStart": "Pradėti",
-    "maintenancePeriod": "Periodas"
+    "maintenancePeriod": "Periodas",
+    "legendDigitalInputActive": "Aktyvus"
 }

@@ -73,6 +73,7 @@
     "sharedTestExpression": "式をテスト",
     "sharedCalendar": "カレンダー",
     "sharedCalendars": "カレンダー",
+    "sharedRouteColoring": "ルート着色",
     "sharedFile": "ファイル",
     "sharedSearchDevices": "デバイスを探す",
     "sharedSortBy": "並び替え",
@@ -127,6 +128,8 @@
     "attributePolylineDistance": "経路距離",
     "attributeReportIgnoreOdometer": "レポート: 走行距離計を無視する",
     "attributeWebReportColor": "Web: レポートの色",
+    "attributeWebColorByDigitalInput": "デジタル入力でルートを着色",
+    "attributeWebColorByDigitalInputName": "ルート着色用デジタル入力",
     "attributeDevicePassword": "デバイスパスワード",
     "attributeDeviceImage": "デバイスのイメージ",
     "attributeDeviceInactivityStart": "デバイス非アクティブ開始",
@@ -617,5 +620,6 @@
     "categoryVan": "バン",
     "categoryScooter": "スクーター",
     "maintenanceStart": "メンテナンス開始",
-    "maintenancePeriod": "メンテナンス終了"
+    "maintenancePeriod": "メンテナンス終了",
+    "legendDigitalInputActive": "アクティブ"
 }

@@ -73,6 +73,7 @@
     "sharedTestExpression": "Test Expression",
     "sharedCalendar": "পঞ্জিকা",
     "sharedCalendars": "পঞ্জিকাগুলি",
+    "sharedRouteColoring": "রুট রঙকরণ",
     "sharedFile": "File",
     "sharedSearchDevices": "Search Devices",
     "sharedSortBy": "Sort By",
@@ -127,6 +128,8 @@
     "attributePolylineDistance": "Polyline Distance",
     "attributeReportIgnoreOdometer": "Report: Ignore Odometer",
     "attributeWebReportColor": "ওয়েব: রিপোর্টের রঙ",
+    "attributeWebColorByDigitalInput": "ডিজিটাল ইনপুট দ্বারা রুট রঙ করুন",
+    "attributeWebColorByDigitalInputName": "রুট রঙকরণের জন্য ডিজিটাল ইনপুট",
     "attributeDevicePassword": "ডিভাইস পাসওয়ার্ড",
     "attributeDeviceImage": "Device Image",
     "attributeDeviceInactivityStart": "Device Inactivity Start",
@@ -617,5 +620,6 @@
     "categoryVan": "ভ্যান",
     "categoryScooter": "Scooter",
     "maintenanceStart": "Start",
-    "maintenancePeriod": "Period"
+    "maintenancePeriod": "Period",
+    "legendDigitalInputActive": "সক্রিয়"
 }

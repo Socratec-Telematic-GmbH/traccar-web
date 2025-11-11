@@ -73,6 +73,7 @@
     "sharedTestExpression": "Test Expression",
     "sharedCalendar": "நாட்காட்டி",
     "sharedCalendars": "நாட்காட்டிகள் ",
+    "sharedRouteColoring": "பாதை வண்ணம்",
     "sharedFile": "கோப்பு",
     "sharedSearchDevices": "Search Devices",
     "sharedSortBy": "Sort By",
@@ -127,6 +128,8 @@
     "attributePolylineDistance": "பாலிலைன் தொலைவு",
     "attributeReportIgnoreOdometer": "அறிக்கை: புறக்கணிக்க வாகன பயண தூர எண்ணி ",
     "attributeWebReportColor": "வலை: அறிக்கை வண்ணம்",
+    "attributeWebColorByDigitalInput": "டிஜிட்டல் உள்ளீடு மூலம் பாதைகளை வண்ணமிடுங்கள்",
+    "attributeWebColorByDigitalInputName": "பாதை வண்ணத்திற்கான டிஜிட்டல் உள்ளீடு",
     "attributeDevicePassword": "சாதன கடவுச்சொல்",
     "attributeDeviceImage": "Device Image",
     "attributeDeviceInactivityStart": "Device Inactivity Start",
@@ -617,5 +620,6 @@
     "categoryVan": "வேன் வாகனம் ",
     "categoryScooter": "Scooter",
     "maintenanceStart": "துவக்கு ",
-    "maintenancePeriod": "காலம்"
+    "maintenancePeriod": "காலம்",
+    "legendDigitalInputActive": "செயலில்"
 }

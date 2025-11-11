@@ -73,6 +73,7 @@
     "sharedTestExpression": "Testaa lauseke",
     "sharedCalendar": "Kalenteri",
     "sharedCalendars": "Kalenterit",
+    "sharedRouteColoring": "Reitin värjäys",
     "sharedFile": "Tiedosto",
     "sharedSearchDevices": "Etsi laitteita",
     "sharedSortBy": "Lajittele",
@@ -127,6 +128,8 @@
     "attributePolylineDistance": "Etäisyys murtoviivaan",
     "attributeReportIgnoreOdometer": "Raportti: Älä huomioi matkamittaria",
     "attributeWebReportColor": "Web: Raportin väri",
+    "attributeWebColorByDigitalInput": "Värjää reitit digitaalisen tulon mukaan",
+    "attributeWebColorByDigitalInputName": "Digitaalinen tulo reitin värjäykseen",
     "attributeDevicePassword": "Laitteen salasana",
     "attributeDeviceImage": "Laitteen kuva",
     "attributeDeviceInactivityStart": "Laitteen epäaktiivisuuden alku",
@@ -617,5 +620,6 @@
     "categoryVan": "Pakettiauto",
     "categoryScooter": "Potkulauta",
     "maintenanceStart": "Alku",
-    "maintenancePeriod": "Huoltoväli"
+    "maintenancePeriod": "Huoltoväli",
+    "legendDigitalInputActive": "Aktiivinen"
 }

@@ -73,6 +73,7 @@
     "sharedTestExpression": "Testuttryck",
     "sharedCalendar": "Kalender",
     "sharedCalendars": "Kalendrar",
+    "sharedRouteColoring": "Ruttfärgning",
     "sharedFile": "Fil",
     "sharedSearchDevices": "Sök Enheter",
     "sharedSortBy": "Sortera efter",
@@ -127,6 +128,8 @@
     "attributePolylineDistance": "Polylinedistans",
     "attributeReportIgnoreOdometer": "Rapport: Ignorera Odometer",
     "attributeWebReportColor": "Web: Rapport färg",
+    "attributeWebColorByDigitalInput": "Färga rutter efter digital ingång",
+    "attributeWebColorByDigitalInputName": "Digital ingång för ruttfärgning",
     "attributeDevicePassword": "Enhetslösenord",
     "attributeDeviceImage": "Enhetsbild",
     "attributeDeviceInactivityStart": "Enhetens inaktivitetsstart",
@@ -617,5 +620,6 @@
     "categoryVan": "Van",
     "categoryScooter": "Scooter",
     "maintenanceStart": "Start",
-    "maintenancePeriod": "Period"
+    "maintenancePeriod": "Period",
+    "legendDigitalInputActive": "Aktiv"
 }

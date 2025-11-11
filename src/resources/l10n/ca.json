@@ -73,6 +73,7 @@
     "sharedTestExpression": "Prova d'\\expressió",
     "sharedCalendar": "Calendari",
     "sharedCalendars": "Calendaris",
+    "sharedRouteColoring": "Coloració de ruta",
     "sharedFile": "Arxiu",
     "sharedSearchDevices": "Buscar Dispositius",
     "sharedSortBy": "Ordenar per",
@@ -127,6 +128,8 @@
     "attributePolylineDistance": "Distància de polilínea",
     "attributeReportIgnoreOdometer": "Informe: Ignorar el odòmetre",
     "attributeWebReportColor": "Web: Color de l\\'informe",
+    "attributeWebColorByDigitalInput": "Colorar rutes per entrada digital",
+    "attributeWebColorByDigitalInputName": "Entrada digital per a la coloració de ruta",
     "attributeDevicePassword": "Contrasenya de dispositiu",
     "attributeDeviceImage": "Imatge del dispositiu",
     "attributeDeviceInactivityStart": "Inici d\\'inactivitat del dispositiu",
@@ -617,5 +620,6 @@
     "categoryVan": "Furgoneta",
     "categoryScooter": "Moto",
     "maintenanceStart": "Iniciar",
-    "maintenancePeriod": "Període"
+    "maintenancePeriod": "Període",
+    "legendDigitalInputActive": "Actiu"
 }

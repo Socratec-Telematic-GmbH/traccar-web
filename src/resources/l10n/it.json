@@ -73,6 +73,7 @@
     "sharedTestExpression": "Prova Espressione",
     "sharedCalendar": "Calendario",
     "sharedCalendars": "Calendari",
+    "sharedRouteColoring": "Colorazione percorso",
     "sharedFile": "File",
     "sharedSearchDevices": "Cerca Dispositivi",
     "sharedSortBy": "Ordina per",
@@ -127,6 +128,8 @@
     "attributePolylineDistance": "Distanza Polilinea",
     "attributeReportIgnoreOdometer": "Rapporto: Ignora Odometro",
     "attributeWebReportColor": "Web: Colore Rapporto",
+    "attributeWebColorByDigitalInput": "Colora percorsi per ingresso digitale",
+    "attributeWebColorByDigitalInputName": "Ingresso digitale per colorazione percorso",
     "attributeDevicePassword": "Password Dispositivo",
     "attributeDeviceImage": "Immagine dispositivo",
     "attributeDeviceInactivityStart": "Inizio Inattività Dispositivo",
@@ -617,5 +620,6 @@
     "categoryVan": "Furgone",
     "categoryScooter": "Scooter",
     "maintenanceStart": "Inizio",
-    "maintenancePeriod": "Periodo"
+    "maintenancePeriod": "Periodo",
+    "legendDigitalInputActive": "Attivo"
 }

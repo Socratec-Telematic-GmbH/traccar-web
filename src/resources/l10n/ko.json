@@ -73,6 +73,7 @@
     "sharedTestExpression": "표현 테스트",
     "sharedCalendar": "달력",
     "sharedCalendars": "달력",
+    "sharedRouteColoring": "경로 색상",
     "sharedFile": "파일",
     "sharedSearchDevices": "기기 검색",
     "sharedSortBy": "정렬",
@@ -127,6 +128,8 @@
     "attributePolylineDistance": "연속 거리",
     "attributeReportIgnoreOdometer": "보고: 주행거리 무시",
     "attributeWebReportColor": "웹: 보고서 색상",
+    "attributeWebColorByDigitalInput": "디지털 입력으로 경로 색상 지정",
+    "attributeWebColorByDigitalInputName": "경로 색상 지정용 디지털 입력",
     "attributeDevicePassword": "기기 비밀번호",
     "attributeDeviceImage": "기기 이미지",
     "attributeDeviceInactivityStart": "기기 비활성화 시작",
@@ -617,5 +620,6 @@
     "categoryVan": "밴",
     "categoryScooter": "오토바이",
     "maintenanceStart": "시작",
-    "maintenancePeriod": "주기"
+    "maintenancePeriod": "주기",
+    "legendDigitalInputActive": "활성"
 }

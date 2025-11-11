@@ -73,6 +73,7 @@
     "sharedTestExpression": "Test Expression",
     "sharedCalendar": "കലണ്ടർ ",
     "sharedCalendars": "കലണ്ടറുകൾ ",
+    "sharedRouteColoring": "റൂട്ട് നിറം",
     "sharedFile": "ഫയൽ ",
     "sharedSearchDevices": "Search Devices",
     "sharedSortBy": "Sort By",
@@ -127,6 +128,8 @@
     "attributePolylineDistance": "Polyline Distance",
     "attributeReportIgnoreOdometer": "Report: Ignore Odometer",
     "attributeWebReportColor": "Web: Report Color",
+    "attributeWebColorByDigitalInput": "ഡിജിറ്റൽ ഇൻപുട്ട് വഴി റൂട്ടുകൾ നിറമാക്കുക",
+    "attributeWebColorByDigitalInputName": "റൂട്ട് നിറത്തിനുള്ള ഡിജിറ്റൽ ഇൻപുട്ട്",
     "attributeDevicePassword": "Device Password",
     "attributeDeviceImage": "Device Image",
     "attributeDeviceInactivityStart": "Device Inactivity Start",
@@ -617,5 +620,6 @@
     "categoryVan": "Van",
     "categoryScooter": "Scooter",
     "maintenanceStart": "Start",
-    "maintenancePeriod": "Period"
+    "maintenancePeriod": "Period",
+    "legendDigitalInputActive": "സജീവം"
 }

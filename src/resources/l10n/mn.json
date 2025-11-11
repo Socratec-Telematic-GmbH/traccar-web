@@ -73,6 +73,7 @@
     "sharedTestExpression": "Test Expression",
     "sharedCalendar": "Календар",
     "sharedCalendars": "Календарууд",
+    "sharedRouteColoring": "Маршрут өнгөлөх",
     "sharedFile": "Файл",
     "sharedSearchDevices": "Search Devices",
     "sharedSortBy": "Sort By",
@@ -127,6 +128,8 @@
     "attributePolylineDistance": "Polyline Distance",
     "attributeReportIgnoreOdometer": "Тайлан: Хянахын гүйлт тооцоохгүй",
     "attributeWebReportColor": "Веб: Тайлангийн өнгө",
+    "attributeWebColorByDigitalInput": "Дижитал оролтоор маршрут өнгөлөх",
+    "attributeWebColorByDigitalInputName": "Маршрут өнгөлөхөд зориулсан дижитал оролт",
     "attributeDevicePassword": "Төхөөрөмжийн нууц үг",
     "attributeDeviceImage": "Device Image",
     "attributeDeviceInactivityStart": "Төхөөрөмж Хэзээ унтсан",
@@ -617,5 +620,6 @@
     "categoryVan": "Van",
     "categoryScooter": "Scooter",
     "maintenanceStart": "Start",
-    "maintenancePeriod": "Period"
+    "maintenancePeriod": "Period",
+    "legendDigitalInputActive": "Идэвхтэй"
 }

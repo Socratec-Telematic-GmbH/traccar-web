@@ -73,6 +73,7 @@
     "sharedTestExpression": "Test Expression",
     "sharedCalendar": "Calendário",
     "sharedCalendars": "Calendários",
+    "sharedRouteColoring": "Coloração de rota",
     "sharedFile": "Ficheiro",
     "sharedSearchDevices": "Procurar Dispositivos",
     "sharedSortBy": "Ordenar por",
@@ -127,6 +128,8 @@
     "attributePolylineDistance": "Distância Polilinha",
     "attributeReportIgnoreOdometer": "Relatório: Ignorar Conta-Quilómetros",
     "attributeWebReportColor": "Web: Cor do Relatório",
+    "attributeWebColorByDigitalInput": "Colorir rotas por entrada digital",
+    "attributeWebColorByDigitalInputName": "Entrada digital para coloração de rota",
     "attributeDevicePassword": "Password do Dispositivo",
     "attributeDeviceImage": "Imagem do Dispositivo",
     "attributeDeviceInactivityStart": "Inicio da Inatividade do Dispositivo",
@@ -617,5 +620,6 @@
     "categoryVan": "Caravana",
     "categoryScooter": "Scooter",
     "maintenanceStart": "Iniciar",
-    "maintenancePeriod": "Período"
+    "maintenancePeriod": "Período",
+    "legendDigitalInputActive": "Ativo"
 }

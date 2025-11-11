@@ -7,6 +7,10 @@ import {
   FormControlLabel,
   Checkbox,
   TextField,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { MuiFileInput } from 'mui-file-input';
@@ -169,6 +173,51 @@ const DevicePage = () => {
               </AccordionDetails>
             </Accordion>
           )}
+          <Accordion>
+            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+              <Typography variant="subtitle1">
+                {t('sharedRouteColoring')}
+              </Typography>
+            </AccordionSummary>
+            <AccordionDetails className={classes.details}>
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={item.attributes?.['web.colorByDigitalInput'] || false}
+                    onChange={(e) => setItem({
+                      ...item,
+                      attributes: {
+                        ...item.attributes,
+                        'web.colorByDigitalInput': e.target.checked,
+                      },
+                    })}
+                  />
+                }
+                label={t('attributeWebColorByDigitalInput')}
+              />
+              {item.attributes?.['web.colorByDigitalInput'] && (
+                <FormControl fullWidth margin="normal">
+                  <InputLabel>{t('attributeWebColorByDigitalInputName')}</InputLabel>
+                  <Select
+                    label={t('attributeWebColorByDigitalInputName')}
+                    value={item.attributes?.['web.colorByDigitalInputName'] || ''}
+                    onChange={(e) => setItem({
+                      ...item,
+                      attributes: {
+                        ...item.attributes,
+                        'web.colorByDigitalInputName': e.target.value,
+                      },
+                    })}
+                  >
+                    <MenuItem value="in1">{t('positionInput')} 1</MenuItem>
+                    <MenuItem value="in2">{t('positionInput')} 2</MenuItem>
+                    <MenuItem value="in3">{t('positionInput')} 3</MenuItem>
+                    <MenuItem value="in4">{t('positionInput')} 4</MenuItem>
+                  </Select>
+                </FormControl>
+              )}
+            </AccordionDetails>
+          </Accordion>
           <EditAttributesAccordion
             attributes={item.attributes}
             setAttributes={(attributes) => setItem({ ...item, attributes })}

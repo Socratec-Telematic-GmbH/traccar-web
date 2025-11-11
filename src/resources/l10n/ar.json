@@ -73,6 +73,7 @@
     "sharedTestExpression": "Test Expression",
     "sharedCalendar": "التقويم",
     "sharedCalendars": "التقويمات",
+    "sharedRouteColoring": "تلوين المسار",
     "sharedFile": "ملف",
     "sharedSearchDevices": "Search Devices",
     "sharedSortBy": "Sort By",
@@ -127,6 +128,8 @@
     "attributePolylineDistance": "مسافة متعددة الخطوط",
     "attributeReportIgnoreOdometer": "تقرير: إهمال عداد المسافة",
     "attributeWebReportColor": "الويب: لون التقرير",
+    "attributeWebColorByDigitalInput": "تلوين المسارات حسب المدخل الرقمي",
+    "attributeWebColorByDigitalInputName": "المدخل الرقمي لتلوين المسار",
     "attributeDevicePassword": "الرقم السري للجهاز",
     "attributeDeviceImage": "Device Image",
     "attributeDeviceInactivityStart": "بداية عدم فعالية الجهاز",
@@ -617,5 +620,6 @@
     "categoryVan": "نقل",
     "categoryScooter": "سكوتر",
     "maintenanceStart": "بداية",
-    "maintenancePeriod": "فترة"
+    "maintenancePeriod": "فترة",
+    "legendDigitalInputActive": "نشط"
 }

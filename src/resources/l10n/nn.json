@@ -73,6 +73,7 @@
     "sharedTestExpression": "Test Expression",
     "sharedCalendar": "Kalender",
     "sharedCalendars": "Kalendrar",
+    "sharedRouteColoring": "Rutefarging",
     "sharedFile": "Fil",
     "sharedSearchDevices": "Search Devices",
     "sharedSortBy": "Sort By",
@@ -127,6 +128,8 @@
     "attributePolylineDistance": "Polylinjedistanse",
     "attributeReportIgnoreOdometer": "Rapporter: Ignorer kilometerteljar",
     "attributeWebReportColor": "Web: Rapportfarge",
+    "attributeWebColorByDigitalInput": "Farge ruter etter digital inngang",
+    "attributeWebColorByDigitalInputName": "Digital inngang for rutefarging",
     "attributeDevicePassword": "Einingspassord",
     "attributeDeviceImage": "Device Image",
     "attributeDeviceInactivityStart": "Device Inactivity Start",
@@ -617,5 +620,6 @@
     "categoryVan": "Varebil",
     "categoryScooter": "Scooter",
     "maintenanceStart": "Start",
-    "maintenancePeriod": "Periode"
+    "maintenancePeriod": "Periode",
+    "legendDigitalInputActive": "Aktiv"
 }
