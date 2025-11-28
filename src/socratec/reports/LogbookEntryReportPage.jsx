@@ -179,13 +179,18 @@ const LogbookEntryReportPage = () => {
     setUpdatingItems(prev => new Set(prev).add(itemId));
     
     try {
+      const currentItem = items.find(item => item.id === itemId);
       const response = await fetch(`/api/logbook/${itemId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
           Accept: 'application/json',
         },
-        body: JSON.stringify({ type: newType, id: itemId }),
+        body: JSON.stringify({ 
+          type: newType, 
+          notes: currentItem.notes || '', 
+          id: itemId 
+        }),
       });
       
       if (response.ok) {
