@@ -73,6 +73,7 @@
     "sharedTestExpression": "Test Expression",
     "sharedCalendar": "Lịch",
     "sharedCalendars": "Lịch",
+    "sharedRouteColoring": "Tô màu tuyến đường",
     "sharedFile": "Tập tin",
     "sharedSearchDevices": "Search Devices",
     "sharedSortBy": "Sort By",
@@ -127,6 +128,8 @@
     "attributePolylineDistance": "Polyline Distance",
     "attributeReportIgnoreOdometer": "Báo cáo: Bỏ qua đồng hồ đo",
     "attributeWebReportColor": "Web: Màu báo cáo",
+    "attributeWebColorByDigitalInput": "Tô màu tuyến đường theo đầu vào kỹ thuật số",
+    "attributeWebColorByDigitalInputName": "Đầu vào kỹ thuật số cho tô màu tuyến đường",
     "attributeDevicePassword": "Mật khẩu thiết bị",
     "attributeDeviceImage": "Device Image",
     "attributeDeviceInactivityStart": "Device Inactivity Start",
@@ -617,5 +620,6 @@
     "categoryVan": "Xe thùng",
     "categoryScooter": "Scooter",
     "maintenanceStart": "Start",
-    "maintenancePeriod": "Period"
+    "maintenancePeriod": "Period",
+    "legendDigitalInputActive": "Hoạt động"
 }

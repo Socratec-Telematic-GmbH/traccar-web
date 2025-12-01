@@ -73,6 +73,7 @@
     "sharedTestExpression": "Preizkusi izraz",
     "sharedCalendar": "Koledar",
     "sharedCalendars": "Koledarji",
+    "sharedRouteColoring": "Barvanje poti",
     "sharedFile": "Datoteka",
     "sharedSearchDevices": "Išči po napravah",
     "sharedSortBy": "Razvrsti po",
@@ -127,6 +128,8 @@
     "attributePolylineDistance": "Polyline Distance",
     "attributeReportIgnoreOdometer": "Poročilo: Prezri stanje števca",
     "attributeWebReportColor": "Splet: Barva poročila",
+    "attributeWebColorByDigitalInput": "Obarvaj poti po digitalnem vhodu",
+    "attributeWebColorByDigitalInputName": "Digitalni vhod za barvanje poti",
     "attributeDevicePassword": "Geslo naprave",
     "attributeDeviceImage": "Slika naprave",
     "attributeDeviceInactivityStart": "Začetek neaktivnosti naprave",
@@ -617,5 +620,6 @@
     "categoryVan": "Kombi",
     "categoryScooter": "Skuter",
     "maintenanceStart": "Začetek",
-    "maintenancePeriod": "Obdobje"
+    "maintenancePeriod": "Obdobje",
+    "legendDigitalInputActive": "Aktiven"
 }

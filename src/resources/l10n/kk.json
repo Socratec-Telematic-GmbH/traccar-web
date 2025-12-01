@@ -73,6 +73,7 @@
     "sharedTestExpression": "Test Expression",
     "sharedCalendar": "Күнтізбе",
     "sharedCalendars": "Күнтізбелер",
+    "sharedRouteColoring": "Маршрутты бояу",
     "sharedFile": "Файл",
     "sharedSearchDevices": "Search Devices",
     "sharedSortBy": "Sort By",
@@ -127,6 +128,8 @@
     "attributePolylineDistance": "Polyline Distance",
     "attributeReportIgnoreOdometer": "Есеп: одометр елемеу",
     "attributeWebReportColor": "Веб: Түсі Есеп",
+    "attributeWebColorByDigitalInput": "Цифрлық кіріс бойынша маршруттарды бояу",
+    "attributeWebColorByDigitalInputName": "Маршрутты бояуға арналған цифрлық кіріс",
     "attributeDevicePassword": "Құрылғы Құпия Сөз",
     "attributeDeviceImage": "Device Image",
     "attributeDeviceInactivityStart": "Device Inactivity Start",
@@ -617,5 +620,6 @@
     "categoryVan": "Van",
     "categoryScooter": "Scooter",
     "maintenanceStart": "Start",
-    "maintenancePeriod": "Period"
+    "maintenancePeriod": "Period",
+    "legendDigitalInputActive": "Белсенді"
 }

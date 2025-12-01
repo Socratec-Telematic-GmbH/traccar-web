@@ -2,7 +2,7 @@ import { useTheme } from '@mui/material/styles';
 import { useId, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { map } from './core/MapView';
-import getSpeedColor from '../common/util/colors';
+import getSpeedColor, { DIGITAL_INPUT_COLOR } from '../common/util/colors';
 import { useAttributePreference } from '../common/util/preferences';
 
 const MapRoutePath = ({ positions }) => {
@@ -22,6 +22,24 @@ const MapRoutePath = ({ positions }) => {
       }
     }
     return null;
+  });
+
+  const colorByDigitalInputEnabled = useSelector((state) => {
+    const position = positions?.find(() => true);
+    if (position) {
+      const attributes = state.devices.items[position.deviceId]?.attributes;
+      return attributes?.['web.colorByDigitalInput'] || false;
+    }
+    return false;
+  });
+
+  const colorByDigitalInputName = useSelector((state) => {
+    const position = positions?.find(() => true);
+    if (position) {
+      const attributes = state.devices.items[position.deviceId]?.attributes;
+      return attributes?.['web.colorByDigitalInputName'] || '';
+    }
+    return '';
   });
 
   const mapLineWidth = useAttributePreference('mapLineWidth', 2);
@@ -75,11 +93,25 @@ const MapRoutePath = ({ positions }) => {
           coordinates: [[positions[i].longitude, positions[i].latitude], [positions[i + 1].longitude, positions[i + 1].latitude]],
         },
         properties: {
-          color: reportColor || getSpeedColor(
-            positions[i + 1].speed,
-            minSpeed,
-            maxSpeed,
-          ),
+          color: (() => {
+            // Priority 1: Check if digital input coloring is enabled
+            if (colorByDigitalInputEnabled && colorByDigitalInputName) {
+              const inputValue = positions[i + 1].attributes?.[colorByDigitalInputName];
+              if (inputValue === true) {
+                return DIGITAL_INPUT_COLOR;
+              }
+            }
+            // Priority 2: Use reportColor if set
+            if (reportColor) {
+              return reportColor;
+            }
+            // Priority 3: Use speed-based coloring
+            return getSpeedColor(
+              positions[i + 1].speed,
+              minSpeed,
+              maxSpeed,
+            );
+          })(),
           width: mapLineWidth,
           opacity: mapLineOpacity,
         },
@@ -89,7 +121,7 @@ const MapRoutePath = ({ positions }) => {
       type: 'FeatureCollection',
       features,
     });
-  }, [theme, positions, reportColor, mapLineWidth, mapLineOpacity]);
+  }, [theme, positions, reportColor, mapLineWidth, mapLineOpacity, colorByDigitalInputEnabled, colorByDigitalInputName]);
 
   return null;
 };

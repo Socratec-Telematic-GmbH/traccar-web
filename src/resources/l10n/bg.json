@@ -73,6 +73,7 @@
     "sharedTestExpression": "Test Expression",
     "sharedCalendar": "Календар",
     "sharedCalendars": "Календари",
+    "sharedRouteColoring": "Оцветяване на маршрут",
     "sharedFile": "Архив",
     "sharedSearchDevices": "Search Devices",
     "sharedSortBy": "Sort By",
@@ -127,6 +128,8 @@
     "attributePolylineDistance": "Дължина на линията",
     "attributeReportIgnoreOdometer": "Отчет: Игнорирай километража",
     "attributeWebReportColor": "Цвят на Отчета",
+    "attributeWebColorByDigitalInput": "Оцветяване на маршрути по цифров вход",
+    "attributeWebColorByDigitalInputName": "Цифров вход за оцветяване на маршрут",
     "attributeDevicePassword": "Парола на устройството",
     "attributeDeviceImage": "Device Image",
     "attributeDeviceInactivityStart": "Device Inactivity Start",
@@ -617,5 +620,6 @@
     "categoryVan": "Ван",
     "categoryScooter": "Скутер",
     "maintenanceStart": "Старт",
-    "maintenancePeriod": "Период"
+    "maintenancePeriod": "Период",
+    "legendDigitalInputActive": "Активен"
 }

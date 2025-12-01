@@ -73,6 +73,7 @@
     "sharedTestExpression": "Test Expression",
     "sharedCalendar": "Kalender",
     "sharedCalendars": "Kalendere",
+    "sharedRouteColoring": "Rutefarvning",
     "sharedFile": "Fil",
     "sharedSearchDevices": "Search Devices",
     "sharedSortBy": "Sort By",
@@ -127,6 +128,8 @@
     "attributePolylineDistance": "Polyline afstand",
     "attributeReportIgnoreOdometer": "Rapport: Ignorer odometer",
     "attributeWebReportColor": "Web : Rapport farve",
+    "attributeWebColorByDigitalInput": "Farv ruter efter digital indgang",
+    "attributeWebColorByDigitalInputName": "Digital indgang til rutefarvning",
     "attributeDevicePassword": "Enheds kodeord",
     "attributeDeviceImage": "Device Image",
     "attributeDeviceInactivityStart": "Start af enhedens inaktivitet",
@@ -617,5 +620,6 @@
     "categoryVan": "Van",
     "categoryScooter": "scooter",
     "maintenanceStart": "start",
-    "maintenancePeriod": "Periode"
+    "maintenancePeriod": "Periode",
+    "legendDigitalInputActive": "Aktiv"
 }

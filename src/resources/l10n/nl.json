@@ -73,6 +73,7 @@
     "sharedTestExpression": "Testexpressie",
     "sharedCalendar": "Kalender",
     "sharedCalendars": "Kalenders",
+    "sharedRouteColoring": "Route kleuring",
     "sharedFile": "Bestand",
     "sharedSearchDevices": "Zoek apparaten",
     "sharedSortBy": "Sorteer op",
@@ -127,6 +128,8 @@
     "attributePolylineDistance": "Polylijn afstand",
     "attributeReportIgnoreOdometer": "Rapport: negeer odometer",
     "attributeWebReportColor": "Web: rapportkleur",
+    "attributeWebColorByDigitalInput": "Kleur routes op digitale ingang",
+    "attributeWebColorByDigitalInputName": "Digitale ingang voor route kleuring",
     "attributeDevicePassword": "Apparaatwachtwoord",
     "attributeDeviceImage": "Apparaatafbeelding",
     "attributeDeviceInactivityStart": "Start van inactiviteit",
@@ -617,5 +620,6 @@
     "categoryVan": "Busje",
     "categoryScooter": "Scooter",
     "maintenanceStart": "Start",
-    "maintenancePeriod": "Periode"
+    "maintenancePeriod": "Periode",
+    "legendDigitalInputActive": "Actief"
 }

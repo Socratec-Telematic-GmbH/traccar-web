@@ -57,6 +57,7 @@ import LogsPage from './reports/LogsPage';
 import SharePage from './settings/SharePage';
 import AnnouncementPage from './settings/AnnouncementPage';
 import EmulatorPage from './other/EmulatorPage';
+import LogbookEntryReportPage from './socratec/reports/LogbookEntryReportPage';
 import Loader from './common/components/Loader';
 import { generateLoginToken } from './common/components/NativeInterface';
 import { useLocalization } from './common/components/LocalizationProvider';
@@ -176,6 +177,12 @@ const Navigation = () => {
           <Route path="scheduled" element={<ScheduledPage />} />
           <Route path="statistics" element={<StatisticsPage />} />
           <Route path="logs" element={<LogsPage />} />
+        </Route>
+
+        <Route path="socratec">
+          <Route path="reports">
+            <Route path="logbook-entries" element={<LogbookEntryReportPage />} />
+          </Route>
         </Route>
       </Route>
     </Routes>

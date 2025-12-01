@@ -73,6 +73,7 @@
     "sharedTestExpression": "Test Expression",
     "sharedCalendar": "ប្រតិទិន",
     "sharedCalendars": "ប្រតិទិន",
+    "sharedRouteColoring": "ការលាបពណ៌ផ្លូវ",
     "sharedFile": "ឯកសារ",
     "sharedSearchDevices": "Search Devices",
     "sharedSortBy": "Sort By",
@@ -127,6 +128,8 @@
     "attributePolylineDistance": "Polyline Distance",
     "attributeReportIgnoreOdometer": "Report: Ignore Odometer",
     "attributeWebReportColor": "Web: Report Color",
+    "attributeWebColorByDigitalInput": "លាបពណ៌ផ្លូវតាមការបញ្ចូលឌីជីថល",
+    "attributeWebColorByDigitalInputName": "ការបញ្ចូលឌីជីថលសម្រាប់ការលាបពណ៌ផ្លូវ",
     "attributeDevicePassword": "Device Password",
     "attributeDeviceImage": "Device Image",
     "attributeDeviceInactivityStart": "Device Inactivity Start",
@@ -617,5 +620,6 @@
     "categoryVan": "Van",
     "categoryScooter": "Scooter",
     "maintenanceStart": "Start",
-    "maintenancePeriod": "Period"
+    "maintenancePeriod": "Period",
+    "legendDigitalInputActive": "សកម្ម"
 }

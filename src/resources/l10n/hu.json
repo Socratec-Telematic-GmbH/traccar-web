@@ -73,6 +73,7 @@
     "sharedTestExpression": "Test kifejezés",
     "sharedCalendar": "Naptár",
     "sharedCalendars": "Naptárak",
+    "sharedRouteColoring": "Útvonal színezése",
     "sharedFile": "Fájl",
     "sharedSearchDevices": "Eszközök keresése",
     "sharedSortBy": "Rendezés",
@@ -127,6 +128,8 @@
     "attributePolylineDistance": "Vonaltávolság",
     "attributeReportIgnoreOdometer": "Jelentés: Odométer figyelmen kívül hagyása",
     "attributeWebReportColor": "Web: Jelentés színe",
+    "attributeWebColorByDigitalInput": "Útvonalak színezése digitális bemenet szerint",
+    "attributeWebColorByDigitalInputName": "Digitális bemenet az útvonal színezéséhez",
     "attributeDevicePassword": "Eszköz jelszó",
     "attributeDeviceImage": "Eszköz kép",
     "attributeDeviceInactivityStart": "Eszköz inaktivitás kezdete",
@@ -617,5 +620,6 @@
     "categoryVan": "Teherkocsi",
     "categoryScooter": "Roller",
     "maintenanceStart": "Start",
-    "maintenancePeriod": "Periódus"
+    "maintenancePeriod": "Periódus",
+    "legendDigitalInputActive": "Aktív"
 }

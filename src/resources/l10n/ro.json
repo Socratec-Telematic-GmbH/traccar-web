@@ -73,6 +73,7 @@
     "sharedTestExpression": "Formulă de Test",
     "sharedCalendar": "Calendar",
     "sharedCalendars": "Calendare",
+    "sharedRouteColoring": "Colorarea rutei",
     "sharedFile": "Fișier",
     "sharedSearchDevices": "Caută Echipamente",
     "sharedSortBy": "Sortat După",
@@ -127,6 +128,8 @@
     "attributePolylineDistance": "Distanță Polilinie",
     "attributeReportIgnoreOdometer": "Raport: Ignoră Kilometraj",
     "attributeWebReportColor": "Web: Culoare Raport",
+    "attributeWebColorByDigitalInput": "Colorează rutele după intrare digitală",
+    "attributeWebColorByDigitalInputName": "Intrare digitală pentru colorarea rutei",
     "attributeDevicePassword": "Parolă Dispozitiv",
     "attributeDeviceImage": "Imagine Dispozitiv",
     "attributeDeviceInactivityStart": "Dată Start Dispozitiv Inactiv",
@@ -617,5 +620,6 @@
     "categoryVan": "Duba",
     "categoryScooter": "Scooter",
     "maintenanceStart": "Start",
-    "maintenancePeriod": "Perioada"
+    "maintenancePeriod": "Perioada",
+    "legendDigitalInputActive": "Activ"
 }

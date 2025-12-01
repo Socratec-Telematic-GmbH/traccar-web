@@ -73,6 +73,7 @@
     "sharedTestExpression": "Test Expression",
     "sharedCalendar": "יומן",
     "sharedCalendars": "יומנים",
+    "sharedRouteColoring": "צביעת מסלול",
     "sharedFile": "קובץ",
     "sharedSearchDevices": "חיפוש מכשירים",
     "sharedSortBy": "מיון לפי",
@@ -127,6 +128,8 @@
     "attributePolylineDistance": "מרחק מצולע",
     "attributeReportIgnoreOdometer": "דוח : התעלם ממד המרחק",
     "attributeWebReportColor": "אתר : בחר צבע",
+    "attributeWebColorByDigitalInput": "צבע מסלולים לפי כניסה דיגיטלית",
+    "attributeWebColorByDigitalInputName": "כניסה דיגיטלית לצביעת מסלול",
     "attributeDevicePassword": "סיסמת התקן ",
     "attributeDeviceImage": "תמונת רכב",
     "attributeDeviceInactivityStart": "Device Inactivity Start",
@@ -617,5 +620,6 @@
     "categoryVan": "מסחרית",
     "categoryScooter": "קטנוע",
     "maintenanceStart": "התחל",
-    "maintenancePeriod": "פרק זמן "
+    "maintenancePeriod": "פרק זמן ",
+    "legendDigitalInputActive": "פעיל"
 }

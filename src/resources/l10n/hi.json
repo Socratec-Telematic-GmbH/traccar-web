@@ -73,6 +73,7 @@
     "sharedTestExpression": "Test Expression",
     "sharedCalendar": "कैलेंडर",
     "sharedCalendars": "कैलेंडर",
+    "sharedRouteColoring": "मार्ग रंग",
     "sharedFile": "फ़ाइल",
     "sharedSearchDevices": "Search Devices",
     "sharedSortBy": "Sort By",
@@ -127,6 +128,8 @@
     "attributePolylineDistance": "पॉलीलाइन दूरी",
     "attributeReportIgnoreOdometer": "रिपोर्ट: ओडोमीटर को अनदेखा करें",
     "attributeWebReportColor": "वेब: रिपोर्ट रंग",
+    "attributeWebColorByDigitalInput": "डिजिटल इनपुट द्वारा मार्गों को रंगें",
+    "attributeWebColorByDigitalInputName": "मार्ग रंग के लिए डिजिटल इनपुट",
     "attributeDevicePassword": "उपकरण पासवर्ड",
     "attributeDeviceImage": "Device Image",
     "attributeDeviceInactivityStart": "Device Inactivity Start",
@@ -617,5 +620,6 @@
     "categoryVan": "वैन",
     "categoryScooter": "Scooter",
     "maintenanceStart": "प्रारंभ",
-    "maintenancePeriod": "अवधि"
+    "maintenancePeriod": "अवधि",
+    "legendDigitalInputActive": "सक्रिय"
 }

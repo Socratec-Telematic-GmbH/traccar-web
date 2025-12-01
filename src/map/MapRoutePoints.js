@@ -1,7 +1,8 @@
 import { useId, useCallback, useEffect } from 'react';
 import { useTheme } from '@mui/material';
+import { useSelector } from 'react-redux';
 import { map } from './core/MapView';
-import getSpeedColor from '../common/util/colors';
+import getSpeedColor, { DIGITAL_INPUT_COLOR } from '../common/util/colors';
 import { findFonts } from './core/mapUtil';
 import { SpeedLegendControl } from './legend/MapSpeedLegend';
 import { useTranslation } from '../common/components/LocalizationProvider';
@@ -12,6 +13,24 @@ const MapRoutePoints = ({ positions, onClick }) => {
   const theme = useTheme();
   const t = useTranslation();
   const speedUnit = useAttributePreference('speedUnit');
+
+  const colorByDigitalInputEnabled = useSelector((state) => {
+    const position = positions?.[0];
+    if (position) {
+      const attributes = state.devices.items[position.deviceId]?.attributes;
+      return attributes?.['web.colorByDigitalInput'] || false;
+    }
+    return false;
+  });
+
+  const colorByDigitalInputName = useSelector((state) => {
+    const position = positions?.[0];
+    if (position) {
+      const attributes = state.devices.items[position.deviceId]?.attributes;
+      return attributes?.['web.colorByDigitalInputName'] || '';
+    }
+    return '';
+  });
 
   const onMouseEnter = () => map.getCanvas().style.cursor = 'pointer';
   const onMouseLeave = () => map.getCanvas().style.cursor = '';
@@ -69,7 +88,15 @@ const MapRoutePoints = ({ positions, onClick }) => {
     const maxSpeed = positions.map((p) => p.speed).reduce((a, b) => Math.max(a, b), -Infinity);
     const minSpeed = positions.map((p) => p.speed).reduce((a, b) => Math.min(a, b), Infinity);
 
-    const control = new SpeedLegendControl(positions, speedUnit, t, maxSpeed, minSpeed);
+    const control = new SpeedLegendControl(
+      positions,
+      speedUnit,
+      t,
+      maxSpeed,
+      minSpeed,
+      colorByDigitalInputEnabled,
+      colorByDigitalInputName,
+    );
     map.addControl(control, theme.direction === 'rtl' ? 'bottom-right' : 'bottom-left');
 
     map.getSource(id)?.setData({
@@ -84,12 +111,20 @@ const MapRoutePoints = ({ positions, onClick }) => {
           index,
           id: position.id,
           rotation: position.course,
-          color: getSpeedColor(position.speed, minSpeed, maxSpeed),
+          color: (() => {
+            if (colorByDigitalInputEnabled && colorByDigitalInputName) {
+              const inputValue = position.attributes?.[colorByDigitalInputName];
+              if (inputValue === true) {
+                return DIGITAL_INPUT_COLOR;
+              }
+            }
+            return getSpeedColor(position.speed, minSpeed, maxSpeed);
+          })(),
         },
       })),
     });
     return () => map.removeControl(control);
-  }, [onMarkerClick, positions]);
+  }, [onMarkerClick, positions, colorByDigitalInputEnabled, colorByDigitalInputName]);
 
   return null;
 };

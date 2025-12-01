@@ -73,6 +73,7 @@
     "sharedTestExpression": "სატესტო გამოხატულება",
     "sharedCalendar": "კალენდარი",
     "sharedCalendars": "კალენდრები",
+    "sharedRouteColoring": "მარშრუტის შეღებვა",
     "sharedFile": "ფაილი",
     "sharedSearchDevices": "მოწყობილობების ძებნა",
     "sharedSortBy": "დალაგება",
@@ -127,6 +128,8 @@
     "attributePolylineDistance": "ტეხილის მანძილი",
     "attributeReportIgnoreOdometer": "Report: ოდომეტრობის იგნორირება",
     "attributeWebReportColor": "Web: რეპორტის ფერი",
+    "attributeWebColorByDigitalInput": "მარშრუტების შეღებვა ციფრული შეყვანით",
+    "attributeWebColorByDigitalInputName": "ციფრული შეყვანა მარშრუტის შეღებვისთვის",
     "attributeDevicePassword": "მოწყობილობის პაროლი",
     "attributeDeviceImage": "მოწყობილობის სურათი",
     "attributeDeviceInactivityStart": "მოწყობილობის უმოქმედობის დაწყება",
@@ -617,5 +620,6 @@
     "categoryVan": "ფურგონი",
     "categoryScooter": "სკუტერი",
     "maintenanceStart": "დაწყება",
-    "maintenancePeriod": "პერიოდი"
+    "maintenancePeriod": "პერიოდი",
+    "legendDigitalInputActive": "აქტიური"
 }

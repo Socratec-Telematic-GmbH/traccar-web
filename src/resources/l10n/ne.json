@@ -73,6 +73,7 @@
     "sharedTestExpression": "परीक्षण अभिव्यक्ति",
     "sharedCalendar": "पात्रो",
     "sharedCalendars": "पात्रोहरू",
+    "sharedRouteColoring": "मार्ग रङ",
     "sharedFile": "फाइल",
     "sharedSearchDevices": "खोज उपकरण",
     "sharedSortBy": "द्वारा क्रमबद्ध",
@@ -127,6 +128,8 @@
     "attributePolylineDistance": "बहुरेखा दूरि",
     "attributeReportIgnoreOdometer": "प्रतिबेदन: ओडोमिटर वेवास्ता",
     "attributeWebReportColor": "वेब: प्रतिबेदन रङ्ग",
+    "attributeWebColorByDigitalInput": "डिजिटल इनपुटद्वारा मार्गहरू रङ गर्नुहोस्",
+    "attributeWebColorByDigitalInputName": "मार्ग रङको लागि डिजिटल इनपुट",
     "attributeDevicePassword": "यन्त्र गोप्य शब्द",
     "attributeDeviceImage": "उपकरण फोटो",
     "attributeDeviceInactivityStart": "यन्त्र निष्क्रियता सुरु",
@@ -617,5 +620,6 @@
     "categoryVan": "भ्यान ",
     "categoryScooter": "स्कुटर",
     "maintenanceStart": "शुरु",
-    "maintenancePeriod": "अवधि"
+    "maintenancePeriod": "अवधि",
+    "legendDigitalInputActive": "सक्रिय"
 }
