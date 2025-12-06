@@ -11,6 +11,7 @@ import RouteIcon from '@mui/icons-material/Route';
 import EventRepeatIcon from '@mui/icons-material/EventRepeat';
 import NotesIcon from '@mui/icons-material/Notes';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
+import RadarIcon from '@mui/icons-material/Radar';
 import { useLocation } from 'react-router-dom';
 import { useTranslation } from '../../common/components/LocalizationProvider';
 import { useAdministrator, useRestriction } from '../../common/util/permissions';
@@ -55,6 +56,12 @@ const ReportsMenu = () => {
           link="/socratec/reports/logbook-entries"
           icon={<MenuBookIcon />}
           selected={location.pathname === '/socratec/reports/logbook-entries'}
+        />
+        <MenuItem
+          title={t('socratec_reportAis')}
+          link="/socratec/reports/ais"
+          icon={<RadarIcon />}
+          selected={location.pathname === '/socratec/reports/ais'}
         />
         <MenuItem
           title={t('reportStops')}

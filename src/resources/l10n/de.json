@@ -636,5 +636,14 @@
     "socratec_logbookPrivateDuration": "Private Dauer",
     "socratec_logbookBusinessDuration": "Geschäftliche Dauer",
     "socratec_exportPdf": "PDF exportieren",
-    "socratec_refresh": "Aktualisieren"
+    "socratec_refresh": "Aktualisieren",
+    "socratec_reportAis": "AIS",
+    "socratec_reportAisDescription": "Geräteliste mit Trägerinformationen (AIS/MMSI-Daten)",
+    "socratec_carrierId": "Träger-ID",
+    "socratec_carrierType": "Trägertyp",
+    "socratec_carrierCreatedAt": "Träger erstellt",
+    "socratec_carrierTypeVessel": "Schiff",
+    "socratec_carrierTypeUnknown": "Unbekannt",
+    "socratec_carrierIdPlaceholder": "MMSI oder Träger-ID eingeben",
+    "socratec_invalidMMSI": "Ungültige MMSI-Nummer. MMSI muss genau 9 Ziffern haben."
 }

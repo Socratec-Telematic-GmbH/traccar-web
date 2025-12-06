@@ -636,5 +636,14 @@
     "socratec_logbookPrivateDuration": "Private Duration",
     "socratec_logbookBusinessDuration": "Business Duration",
     "socratec_exportPdf": "Export PDF",
-    "socratec_refresh": "Refresh"
+    "socratec_refresh": "Refresh",
+    "socratec_reportAis": "AIS",
+    "socratec_reportAisDescription": "Device list with carrier information (AIS/MMSI data)",
+    "socratec_carrierId": "Carrier ID",
+    "socratec_carrierType": "Carrier Type",
+    "socratec_carrierCreatedAt": "Carrier Created",
+    "socratec_carrierTypeVessel": "Vessel",
+    "socratec_carrierTypeUnknown": "Unknown",
+    "socratec_carrierIdPlaceholder": "Enter MMSI or carrier ID",
+    "socratec_invalidMMSI": "Invalid MMSI number. MMSI must be exactly 9 digits."
 }
