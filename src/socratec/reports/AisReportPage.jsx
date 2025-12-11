@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
 import {
   Table, TableBody, TableCell, TableHead, TableRow, Typography, Box, Chip, TextField, CircularProgress,
 } from '@mui/material';
@@ -17,8 +16,6 @@ const AisReportPage = () => {
   const { classes } = useReportStyles();
   const t = useTranslation();
   const admin = useAdministrator();
-
-  const devices = useSelector((state) => state.devices.items);
 
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(false);
