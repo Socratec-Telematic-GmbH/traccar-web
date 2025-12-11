@@ -57,12 +57,14 @@ const ReportsMenu = () => {
           icon={<MenuBookIcon />}
           selected={location.pathname === '/socratec/reports/logbook-entries'}
         />
-        <MenuItem
-          title={t('socratec_reportAis')}
-          link="/socratec/reports/ais"
-          icon={<RadarIcon />}
-          selected={location.pathname === '/socratec/reports/ais'}
-        />
+        {admin && (
+          <MenuItem
+            title={t('socratec_reportAis')}
+            link="/socratec/reports/ais"
+            icon={<RadarIcon />}
+            selected={location.pathname === '/socratec/reports/ais'}
+          />
+        )}
         <MenuItem
           title={t('reportStops')}
           link="/reports/stop"

@@ -5,6 +5,7 @@ import {
 } from '@mui/material';
 import ErrorIcon from '@mui/icons-material/Error';
 import { useTranslation } from '../../common/components/LocalizationProvider';
+import { useAdministrator } from '../../common/util/permissions';
 import PageLayout from '../../common/components/PageLayout';
 import ReportsMenu from '../../reports/components/ReportsMenu';
 import { useCatch } from '../../reactHelper';
@@ -15,6 +16,7 @@ import { formatTime } from '../../common/util/formatter';
 const AisReportPage = () => {
   const { classes } = useReportStyles();
   const t = useTranslation();
+  const admin = useAdministrator();
 
   const devices = useSelector((state) => state.devices.items);
 
@@ -241,6 +243,25 @@ const AisReportPage = () => {
       });
     }
   });
+
+  if (!admin) {
+    return (
+      <PageLayout menu={<ReportsMenu />} breadcrumbs={['reportTitle', 'socratec_reportAis']}>
+        <div className={classes.container}>
+          <div className={classes.containerMain}>
+            <Box sx={{ padding: 4, textAlign: 'center' }}>
+              <Typography variant="h6" gutterBottom>
+                {t('sharedAccess')}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                {t('sharedAccessDenied')}
+              </Typography>
+            </Box>
+          </div>
+        </div>
+      </PageLayout>
+    );
+  }
 
   return (
     <PageLayout menu={<ReportsMenu />} breadcrumbs={['reportTitle', 'socratec_reportAis']}>
