@@ -635,6 +635,8 @@
     "socratec_logbookTotalDuration": "Durée totale",
     "socratec_logbookPrivateDuration": "Durée privée",
     "socratec_logbookBusinessDuration": "Durée professionnelle",
+    "socratec_logbookStartGeofences": "Périmètres de départ",
+    "socratec_logbookEndGeofences": "Périmètres d'arrivée",
     "socratec_exportPdf": "Exporter PDF",
     "socratec_refresh": "Actualiser",
     "socratec_reportAis": "AIS",

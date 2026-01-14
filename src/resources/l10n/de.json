@@ -635,6 +635,8 @@
     "socratec_logbookTotalDuration": "Gesamtdauer",
     "socratec_logbookPrivateDuration": "Private Dauer",
     "socratec_logbookBusinessDuration": "Geschäftliche Dauer",
+    "socratec_logbookStartGeofences": "Start Geo-Zäune",
+    "socratec_logbookEndGeofences": "End Geo-Zäune",
     "socratec_exportPdf": "PDF exportieren",
     "socratec_refresh": "Aktualisieren",
     "socratec_reportAis": "AIS",
