@@ -285,12 +285,12 @@ const LogbookEntryReportPage = () => {
     }
   });
 
-  // Helper function to format geofences array
+  // Helper function to format geofences string
   const formatGeofences = (geofences) => {
-    if (!geofences || geofences.length === 0) {
+    if (!geofences || geofences.trim() === '') {
       return null;
     }
-    return geofences.map(geofence => geofence.name).join(', ');
+    return geofences;
   };
 
   const formatValue = (item, key) => {
