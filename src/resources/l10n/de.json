@@ -647,5 +647,7 @@
     "socratec_carrierTypeVessel": "Schiff",
     "socratec_carrierTypeUnknown": "Unbekannt",
     "socratec_carrierIdPlaceholder": "MMSI oder Träger-ID eingeben",
-    "socratec_invalidMMSI": "Ungültige MMSI-Nummer. MMSI muss genau 9 Ziffern haben."
+    "socratec_invalidMMSI": "Ungültige MMSI-Nummer. MMSI muss genau 9 Ziffern haben.",
+    "socratec_reportGeofenceVisits": "Geofence-Besuche",
+    "socratec_geofenceVisitCount": "Anzahl Besuche"
 }
