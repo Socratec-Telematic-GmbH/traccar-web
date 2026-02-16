@@ -572,7 +572,7 @@
     "reportThisWeek": "Diese Woche",
     "reportPreviousWeek": "Letzte Woche",
     "reportThisMonth": "Dieser Monat",
-    "reportPreviousMonth": "Letzer Monat",
+    "reportPreviousMonth": "Letzter Monat",
     "reportDeviceName": "Gerätename",
     "reportAverageSpeed": "Durchschnittsgeschwindigkeit",
     "reportMaximumSpeed": "Höchstgeschwindigkeit",
@@ -648,6 +648,6 @@
     "socratec_carrierTypeUnknown": "Unbekannt",
     "socratec_carrierIdPlaceholder": "MMSI oder Träger-ID eingeben",
     "socratec_invalidMMSI": "Ungültige MMSI-Nummer. MMSI muss genau 9 Ziffern haben.",
-    "socratec_reportGeofenceVisits": "Geofence-Besuche",
+    "socratec_reportGeofenceVisits": "Besuchte Orte",
     "socratec_geofenceVisitCount": "Anzahl Besuche"
 }

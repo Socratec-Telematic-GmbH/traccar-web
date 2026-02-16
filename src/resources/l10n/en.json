@@ -648,6 +648,6 @@
     "socratec_carrierTypeUnknown": "Unknown",
     "socratec_carrierIdPlaceholder": "Enter MMSI or carrier ID",
     "socratec_invalidMMSI": "Invalid MMSI number. MMSI must be exactly 9 digits.",
-    "socratec_reportGeofenceVisits": "Geofence Visits",
+    "socratec_reportGeofenceVisits": "Visited Places",
     "socratec_geofenceVisitCount": "Visit Count"
 }
