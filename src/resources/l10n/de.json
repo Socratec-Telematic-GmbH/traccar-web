@@ -572,7 +572,7 @@
     "reportThisWeek": "Diese Woche",
     "reportPreviousWeek": "Letzte Woche",
     "reportThisMonth": "Dieser Monat",
-    "reportPreviousMonth": "Letzer Monat",
+    "reportPreviousMonth": "Letzter Monat",
     "reportDeviceName": "Gerätename",
     "reportAverageSpeed": "Durchschnittsgeschwindigkeit",
     "reportMaximumSpeed": "Höchstgeschwindigkeit",
@@ -635,6 +635,8 @@
     "socratec_logbookTotalDuration": "Gesamtdauer",
     "socratec_logbookPrivateDuration": "Private Dauer",
     "socratec_logbookBusinessDuration": "Geschäftliche Dauer",
+    "socratec_logbookStartGeofences": "Start Geo-Zäune",
+    "socratec_logbookEndGeofences": "End Geo-Zäune",
     "socratec_exportPdf": "PDF exportieren",
     "socratec_refresh": "Aktualisieren",
     "socratec_reportAis": "AIS",
@@ -645,5 +647,7 @@
     "socratec_carrierTypeVessel": "Schiff",
     "socratec_carrierTypeUnknown": "Unbekannt",
     "socratec_carrierIdPlaceholder": "MMSI oder Träger-ID eingeben",
-    "socratec_invalidMMSI": "Ungültige MMSI-Nummer. MMSI muss genau 9 Ziffern haben."
+    "socratec_invalidMMSI": "Ungültige MMSI-Nummer. MMSI muss genau 9 Ziffern haben.",
+    "socratec_reportGeofenceVisits": "Besuchte Orte",
+    "socratec_geofenceVisitCount": "Anzahl Besuche"
 }

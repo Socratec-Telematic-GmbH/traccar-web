@@ -59,6 +59,7 @@ import AnnouncementPage from './settings/AnnouncementPage';
 import EmulatorPage from './other/EmulatorPage';
 import LogbookEntryReportPage from './socratec/reports/LogbookEntryReportPage';
 import AisReportPage from './socratec/reports/AisReportPage';
+import GeofenceVisitsReportPage from './socratec/reports/GeofenceVisitsReportPage';
 import Loader from './common/components/Loader';
 import { generateLoginToken } from './common/components/NativeInterface';
 import { useLocalization } from './common/components/LocalizationProvider';
@@ -183,6 +184,7 @@ const Navigation = () => {
         <Route path="socratec">
           <Route path="reports">
             <Route path="logbook-entries" element={<LogbookEntryReportPage />} />
+            <Route path="geofence-visits" element={<GeofenceVisitsReportPage />} />
             <Route path="ais" element={<AisReportPage />} />
           </Route>
         </Route>

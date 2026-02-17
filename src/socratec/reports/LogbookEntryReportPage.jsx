@@ -32,9 +32,11 @@ const columnsArray = [
   ['startTime', 'reportStartTime'],
   ['startOdometer', 'reportStartOdometer'],
   ['startAddress', 'reportStartAddress'],
+  ['startGeofences', 'socratec_logbookStartGeofences'],
   ['endTime', 'reportEndTime'],
   ['endOdometer', 'reportEndOdometer'],
   ['endAddress', 'reportEndAddress'],
+  ['endGeofences', 'socratec_logbookEndGeofences'],
   ['distance', 'sharedDistance'],
   ['averageSpeed', 'reportAverageSpeed'],
   ['maxSpeed', 'reportMaximumSpeed'],
@@ -283,6 +285,14 @@ const LogbookEntryReportPage = () => {
     }
   });
 
+  // Helper function to format geofences string
+  const formatGeofences = (geofences) => {
+    if (!geofences || geofences.trim() === '') {
+      return null;
+    }
+    return geofences;
+  };
+
   const formatValue = (item, key) => {
     const value = item[key];
     switch (key) {
@@ -304,6 +314,9 @@ const LogbookEntryReportPage = () => {
         return (<AddressValue latitude={item.startLat} longitude={item.startLon} originalAddress={value} />);
       case 'endAddress':
         return (<AddressValue latitude={item.endLat} longitude={item.endLon} originalAddress={value} />);
+      case 'startGeofences':
+      case 'endGeofences':
+        return formatGeofences(value);
       case 'driverName':
         // Note: The API provides driverId, but we might need to resolve driver names separately
         // For now, we'll show the driverId if available

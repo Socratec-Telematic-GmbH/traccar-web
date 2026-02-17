@@ -635,6 +635,8 @@
     "socratec_logbookTotalDuration": "Durée totale",
     "socratec_logbookPrivateDuration": "Durée privée",
     "socratec_logbookBusinessDuration": "Durée professionnelle",
+    "socratec_logbookStartGeofences": "Périmètres de départ",
+    "socratec_logbookEndGeofences": "Périmètres d'arrivée",
     "socratec_exportPdf": "Exporter PDF",
     "socratec_refresh": "Actualiser",
     "socratec_reportAis": "AIS",
@@ -645,5 +647,7 @@
     "socratec_carrierTypeVessel": "Navire",
     "socratec_carrierTypeUnknown": "Inconnu",
     "socratec_carrierIdPlaceholder": "Entrer MMSI ou ID transporteur",
-    "socratec_invalidMMSI": "Numéro MMSI invalide. Le MMSI doit avoir exactement 9 chiffres."
+    "socratec_invalidMMSI": "Numéro MMSI invalide. Le MMSI doit comporter exactement 9 chiffres.",
+    "socratec_reportGeofenceVisits": "Lieux Visités",
+    "socratec_geofenceVisitCount": "Nombre de Visites"
 }
